@@ -24,6 +24,12 @@ class ZeitApi extends Component {
 
       // Porfolio Info
       porfolioName: "",
+      gitHubIcon: false,
+      reactIcon: false,
+      jsIcon: false,
+      cssIcon: false,
+      htmlIcon: false,
+      angularIcon: false,
 
       // Project Info
       projectName1: "",
@@ -47,7 +53,10 @@ class ZeitApi extends Component {
 
   // ON CHANGE FORM
   onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
+    // To deal with different inputs
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    this.setState({ [e.target.id]: value });
   };
 
   // DELETE FROM API AND SPLICE ON STATE
@@ -109,6 +118,16 @@ class ZeitApi extends Component {
             
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
             <title>${this.state.porfolioName}</title>
+            <style>
+              img{
+                max-height: 200px;
+              }
+              .false{
+                display:none;
+              }
+            </style>
+
+
             </head>
             <body>
             <div class ="container">
@@ -124,12 +143,12 @@ class ZeitApi extends Component {
               <div class ="row">
                 <div class ="col-12 text-center">
                 <h3>TECNOLOGIAS</h3>
-                  <i class="fab fa-github fa-3x"></i>
-                  <i class="fab fa-react fa-3x"></i>
-                  <i class="fab fa-js-square fa-3x"></i>
-                  <i class="fab fa-css3-alt fa-3x"></i>
-                  <i class="fab fa-html5 fa-3x"></i>
-                  <i class="fab fa-angular fa-3x"></i>
+                  <i class="fab fa-github fa-3x ${this.state.gitHubIcon}"></i>
+                  <i class="fab fa-react fa-3x ${this.state.reactIcon}"></i>
+                  <i class="fab fa-js-square fa-3x ${this.state.jsIcon}"></i>
+                  <i class="fab fa-css3-alt fa-3x ${this.state.cssIcon}"></i>
+                  <i class="fab fa-html5 fa-3x ${this.state.htmlIcon}"></i>
+                  <i class="fab fa-angular fa-3x ${this.state.angularIcon}"></i>
                 </div>
               </div>
             <hr/>
@@ -361,7 +380,7 @@ class ZeitApi extends Component {
                     {errors.passwordincorrect}
                   </span> */}
               </div>
-              {/* -------------------------------------------- NOMBRE PORFOLIO -------------------------------------------- */}
+              {/* -------------------------------------------- DATOS PORFOLIO -------------------------------------------- */}
               <div className="container border">
                 <h4>DATOS PORFOLIO:</h4>
                 <div className="form-group">
@@ -377,6 +396,128 @@ class ZeitApi extends Component {
                       //     invalid: errors.email || errors.emailnotfound
                       //   })}
                     />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="reactIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="reactIcon">
+                      React
+                    </label>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="gitHubIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="gitHubIcon">
+                      GitHub
+                    </label>
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="jsIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="jsIcon">
+                      JavaScript
+                    </label>
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="cssIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="cssIcon">
+                      CSS
+                    </label>
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="htmlIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="htmlIcon">
+                      HTML
+                    </label>
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      onChange={this.onChange}
+                      id="angularIcon"
+                      //   error={errors.email}
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                    <label className="form-check-label" htmlFor="angularIcon">
+                      Angular
+                    </label>
                   </div>
                   {/* <span className="text-danger">
                     {errors.email}
