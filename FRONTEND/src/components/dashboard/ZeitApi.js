@@ -22,9 +22,16 @@ class ZeitApi extends Component {
       email: "",
       linkedin: "",
 
+      // Porfolio Info
+      porfolioName: "",
+
       // Project Info
-      projectName: "",
-      infoProject: "",
+      projectName1: "",
+      infoProject1: "",
+      projectName2: "",
+      infoProject2: "",
+      projectName3: "",
+      infoProject3: "",
       // Checkbox tecnologias
 
       // Url when post, get response of page url
@@ -87,7 +94,7 @@ class ZeitApi extends Component {
         // "Content-Type" : "application/json"
       },
       data: {
-        name: `${this.state.projectName}`,
+        name: `${this.state.porfolioName}`,
         public: false,
         version: 2,
         files: [
@@ -101,7 +108,7 @@ class ZeitApi extends Component {
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-            <title>${this.state.projectName}</title>
+            <title>${this.state.porfolioName}</title>
             </head>
             <body>
             <div class ="container">
@@ -128,40 +135,41 @@ class ZeitApi extends Component {
             <hr/>
               <div class ="row">
                 <div class ="col-12 text-center">
-                  <h3>PROJECTOS</h3>
+                  <h3>PROYECTOS</h3>
                 </div>
               </div>
-              <div class ="row">
-                <div class ="col-sm text-center">
-                  <h4>${this.state.projectName}</h4>
-                  <img class="img-fluid" src="http://www.aprende-facilmente.com/wp-content/uploads/2016/07/angularjs-logo.png" alt="${
-                    this.state.projectName
+              <div class ="row" id="myObject">
+                <div class ="col-lg text-center">
+                  <h4>${this.state.projectName1}</h4>
+                  <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" alt="${
+                    this.state.projectName1
                   }"/>
-                  <p>${this.state.infoProject}</p>
+                  <p>${this.state.infoProject1}</p>
                   <a href="#">Link a ${
-                    this.state.projectName
+                    this.state.projectName1
                   }</a>                  
-                  </div>
-                <div class ="col-sm text-center">
-                  <h4>${this.state.projectName}</h4>
-                  <img class="img-fluid" src="http://www.aprende-facilmente.com/wp-content/uploads/2016/07/angularjs-logo.png" alt="${
-                    this.state.projectName
+                </div>
+                <div class ="col-lg text-center">
+                  <h4>${this.state.projectName2}</h4>
+                  <img class="img-fluid" src="https://cdn-images-1.medium.com/max/1200/1*2p9Mg7T9SME9hMokF7omOw.png" alt="${
+                    this.state.projectName2
                   }"/>
-                  <p>${this.state.infoProject}</p>                  
+                  <p>${this.state.infoProject2}</p>                  
                   <a href="#">Link a ${
-                    this.state.projectName
+                    this.state.projectName2
                   }</a>                  
-                  </div>
-                <div class ="col-sm text-center">
-                  <h4>${this.state.projectName}</h4>
-                  <img class="img-fluid" src="http://www.aprende-facilmente.com/wp-content/uploads/2016/07/angularjs-logo.png" alt="${
-                    this.state.projectName
+                </div>
+                <div class ="col-lg text-center">
+                  <h4>${this.state.projectName3}</h4>
+                  <img class="img-fluid" src="https://cdn-images-1.medium.com/max/1200/1*2p9Mg7T9SME9hMokF7omOw.png" alt="${
+                    this.state.projectName3
                   }"/>
-                  <p>${this.state.infoProject}</p>                  
+                  <p>${this.state.infoProject3}</p>                  
                   <a href="#">Link a ${
-                    this.state.projectName
+                    this.state.projectName3
                   }</a>                  
-                  </div>
+                </div>
+                
               </div>
               <hr/>
                 <div class ="row">
@@ -171,9 +179,10 @@ class ZeitApi extends Component {
                     <h6>${this.state.linkedin}</h6>
                   </div>
                 </div>
-
+                <p id="demo"></p>
 
             </div>
+
             </body>
             </html>`
           }
@@ -184,7 +193,7 @@ class ZeitApi extends Component {
         // When get url back as a response, set state and go to a link in render
         this.setState({
           url: `https://${response.data.url}`,
-          projectUrlName: this.state.projectName,
+          projectUrlName: `VER PORFOLIO - ${this.state.porfolioName}`,
 
           // Loading... spinning
           loading: false
@@ -228,169 +237,300 @@ class ZeitApi extends Component {
             {loading}
             <hr />
             {/*  ---------------------------------------- FORM BEGIN ---------------------------------------- */}
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <div className="input-group">
-                  <input
-                    placeholder="Nombre del Proyecto"
-                    onChange={this.onChange}
-                    value={this.state.projectName}
-                    //   error={errors.email}
-                    id="projectName"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.email || errors.emailnotfound
-                    //   })}
-                  />
+            <form noValidate onSubmit={this.handleSubmit}>
+              <div className="container border">
+                <h4>INFO PERSONAL:</h4>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="mdi mdi-lock" />
+                      </span>
+                    </div> */}
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.userName}
+                      //   error={errors.password}
+                      id="userName"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Nombre"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="mdi mdi-lock" />
+                      </span>
+                    </div> */}
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.userLastNameidoUsuario}
+                      //   error={errors.password}
+                      id="userLastNameidoUsuario"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Apellidos"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="mdi mdi-lock" />
+                      </span>
+                    </div> */}
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.userInfo}
+                      //   error={errors.password}
+                      id="userInfo"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Full Stack - Front End..."
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="mdi mdi-lock" />
+                      </span>
+                    </div> */}
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.email}
+                      //   error={errors.password}
+                      id="email"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="email"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <i className="mdi mdi-lock" />
+                      </span>
+                    </div> */}
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.linkedin}
+                      //   error={errors.password}
+                      id="linkedin"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="linkedin"
+                    />
+                  </div>
                 </div>
                 {/* <span className="text-danger">
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </span> */}
+              </div>
+              {/* -------------------------------------------- NOMBRE PORFOLIO -------------------------------------------- */}
+              <div className="container border">
+                <h4>DATOS PORFOLIO:</h4>
+                <div className="form-group">
+                  <div className="input-group">
+                    <input
+                      placeholder="Nombre Porfolio"
+                      onChange={this.onChange}
+                      value={this.state.porfolioName}
+                      //   error={errors.email}
+                      id="porfolioName"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                  </div>
+                  {/* <span className="text-danger">
                     {errors.email}
                     {errors.emailnotfound}
                   </span> */}
+                </div>
               </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
+              {/* -------------------------------------------- PROYECTO #1 -------------------------------------------- */}
+              <div className="container border">
+                <h4>PROYECTO #1:</h4>
+                <div className="form-group">
+                  <div className="input-group">
+                    <input
+                      placeholder="Nombre del Proyecto #1"
+                      onChange={this.onChange}
+                      value={this.state.projectName1}
+                      //   error={errors.email}
+                      id="projectName1"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
                       <span className="input-group-text">
                         <i className="mdi mdi-lock" />
                       </span>
                     </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.infoProject}
-                    //   error={errors.password}
-                    id="infoProject"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="InfoProject"
-                  />
-                </div>
-                {/* <span className="text-danger">
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.infoProject1}
+                      //   error={errors.password}
+                      id="infoProject1"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Info del proyecto #1"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
                     {errors.password}
                     {errors.passwordincorrect}
                   </span> */}
+                </div>
               </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
+              {/* <div className="form-group">
+                  <button type="submit" className="btn btn-primary btn-block">
+                    Login
+                  </button>
+                  </div> */}
+              {/* --------------------------------------------- PROYECTO #2 --------------------------------------------- */}
+              <div className="container border">
+                <h4>PROYECTO #2:</h4>
+                <div className="form-group">
+                  <div className="input-group">
+                    <input
+                      placeholder="Nombre del Proyecto #2"
+                      onChange={this.onChange}
+                      value={this.state.projectName2}
+                      //   error={errors.email}
+                      id="projectName2"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
                       <span className="input-group-text">
                         <i className="mdi mdi-lock" />
                       </span>
                     </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.userName}
-                    //   error={errors.password}
-                    id="userName"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="Nombre"
-                  />
-                </div>
-                {/* <span className="text-danger">
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.infoProject2}
+                      //   error={errors.password}
+                      id="infoProject2"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Info del Proyecto #2"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
                     {errors.password}
                     {errors.passwordincorrect}
                   </span> */}
+                </div>
               </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
+
+              {/* --------------------------------------------- PROYECTO #3 --------------------------------------------- */}
+
+              <div className="container border">
+                <h4>PROYECTO #3:</h4>
+                <div className="form-group">
+                  <div className="input-group">
+                    <input
+                      placeholder="Nombre del Proyecto #3"
+                      onChange={this.onChange}
+                      value={this.state.projectName3}
+                      //   error={errors.email}
+                      id="projectName3"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.email || errors.emailnotfound
+                      //   })}
+                    />
+                  </div>
+                  {/* <span className="text-danger">
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </span> */}
+                </div>
+                <div className="form-group">
+                  <div className="input-group">
+                    {/* <div className="input-group-prepend">
                       <span className="input-group-text">
                         <i className="mdi mdi-lock" />
                       </span>
                     </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.userLastNameidoUsuario}
-                    //   error={errors.password}
-                    id="userLastNameidoUsuario"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="Apellidos"
-                  />
-                </div>
-                {/* <span className="text-danger">
+                    <input
+                      onChange={this.onChange}
+                      value={this.state.infoProject3}
+                      //   error={errors.password}
+                      id="infoProject3"
+                      type="text"
+                      //   className={classnames("form-control", {
+                      //     invalid: errors.password || errors.passwordincorrect
+                      //   })}
+                      placeholder="Info del Proyecto #3"
+                    />
+                  </div>
+                  {/* <span className="text-danger">
                     {errors.password}
                     {errors.passwordincorrect}
                   </span> */}
-              </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock" />
-                      </span>
-                    </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.userInfo}
-                    //   error={errors.password}
-                    id="userInfo"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="Full Stack - Front End..."
-                  />
                 </div>
-                {/* <span className="text-danger">
-                    {errors.password}
-                    {errors.passwordincorrect}
-                  </span> */}
-              </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock" />
-                      </span>
-                    </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.email}
-                    //   error={errors.password}
-                    id="email"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="email"
-                  />
-                </div>
-                {/* <span className="text-danger">
-                    {errors.password}
-                    {errors.passwordincorrect}
-                  </span> */}
-              </div>
-              <div className="form-group">
-                <div className="input-group">
-                  {/* <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock" />
-                      </span>
-                    </div> */}
-                  <input
-                    onChange={this.onChange}
-                    value={this.state.linkedin}
-                    //   error={errors.password}
-                    id="linkedin"
-                    type="text"
-                    //   className={classnames("form-control", {
-                    //     invalid: errors.password || errors.passwordincorrect
-                    //   })}
-                    placeholder="linkedin"
-                  />
-                </div>
-                {/* <span className="text-danger">
-                    {errors.password}
-                    {errors.passwordincorrect}
-                  </span> */}
               </div>
               {/* <div className="form-group">
                   <button type="submit" className="btn btn-primary btn-block">
@@ -399,6 +539,7 @@ class ZeitApi extends Component {
                   </div> */}
             </form>
           </div>
+          {/*  ----------------------------------- GET DEPLOYS ----------------------------------- */}
           <div className="col-6">
             <button className="btn btn-secondary" onClick={this.handleClickGet}>
               Ver Deploys
