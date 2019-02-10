@@ -7,11 +7,11 @@ class ZeitApi extends Component {
     super();
     this.state = {
       deploys: [
-        {
-          id: null,
-          name: null,
-          url: null
-        }
+        // {
+        //   id: null,
+        //   name: null,
+        //   url: null
+        // }
       ],
 
       // Personal Info
@@ -19,7 +19,7 @@ class ZeitApi extends Component {
       userLastName: "",
       userInfo: "",
 
-      email: "",
+      email: "otro@gmail.com",
       linkedin: "",
 
       // Porfolio Info
@@ -42,6 +42,7 @@ class ZeitApi extends Component {
 
       // Url when post, get response of page url
       url: "",
+      zeitId: null,
 
       loading: false
     };
@@ -71,7 +72,29 @@ class ZeitApi extends Component {
       .then(this.setState({ deploys: deploysArray }));
   };
 
-  // GET OF PROJECTS DEPLOYS
+  // GET PROJECTS DEPLOY FOR USER
+  handleClickGet = () => {
+    axios
+      .post("projects/getprojects", { email: this.state.email })
+      .then(response =>
+          // Index+1 to avoid duplicate data when click
+          response.data.proyectsId.map((deploy, index) =>
+            this.state.deploys[index + 1] === undefined
+              ? this.setState(previousState => ({
+                  deploys: [
+                    ...previousState.deploys,
+                    deploy
+                  ]
+                }))
+              : console.log()
+          )
+        );
+      // .then(response => console.log(response.data.proyectsId));
+  };
+
+  // GET OF ALL PROJECTS DEPLOYS
+
+  /*
   handleClickGet = () => {
     axios
       .get("https://api.zeit.co/v3/now/deployments", {
@@ -91,6 +114,7 @@ class ZeitApi extends Component {
         )
       );
   };
+  */
 
   // POST OF NEW PROJECTS
   handleClickPost = () => {
@@ -100,7 +124,6 @@ class ZeitApi extends Component {
       url: "https://api.zeit.co/v6/now/deployments",
       headers: {
         Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG"
-        // "Content-Type" : "application/json"
       },
       data: {
         name: `${this.state.porfolioName}`,
@@ -117,6 +140,9 @@ class ZeitApi extends Component {
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+            
+            <link rel="stylesheet" href="https://dl.dropbox.com/s/nwa50n17k6v8s36/style.css?dl=0">
+            
             <title>${this.state.porfolioName}</title>
             <style>
               img{
@@ -213,6 +239,7 @@ class ZeitApi extends Component {
         this.setState({
           url: `https://${response.data.url}`,
           projectUrlName: `VER PORFOLIO - ${this.state.porfolioName}`,
+          zeitId: response.data.id,
 
           // Loading... spinning
           loading: false
@@ -221,9 +248,18 @@ class ZeitApi extends Component {
       .catch(error => console.log(error)); // PINTAR ERROR EN PANTALLA DE USUARIO
   };
 
-  //     componentWillMount() {
-
-  //   }
+  // Need to use componentDidUpdate to compare prevState and only send when is receive from the post to Zeit API
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.zeitId !== prevState.zeitId) {
+      // Update Project array from DB (SEND EMAIL + UID FROM ZEIT WHEN DEPLOY)
+      axios
+        .post("projects/addprojects", {
+          email: this.state.email,
+          proyectsId: this.state.zeitId
+        })
+        .then(response => console.log(response));
+    }
+  }
 
   render() {
     // Spinner Loading...
@@ -685,44 +721,16 @@ class ZeitApi extends Component {
             <button className="btn btn-secondary" onClick={this.handleClickGet}>
               Ver Deploys
             </button>
-            {this.state.deploys[1] === undefined ? (
-              console.log()
-            ) : (
-              <div id="deployContainer">
-                {this.state.deploys.map((deploy, index) =>
-                  deploy.name === null ? (
-                    console.log()
-                  ) : (
-                    <div key={deploy.id} className="deployContainer">
-                      <p>Nombre: {deploy.name}</p>
-                      <p>
-                        Url:
-                        <a
-                          href={`https://${deploy.url}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          https://{deploy.url}
-                        </a>
-                      </p>
-                      {/* <p>Url: {deploy.url}</p> */}
-                      <button
-                        className="btn btn-danger"
-                        onClick={this.handleClickDelete.bind(
-                          this,
-                          deploy.id,
-                          index
-                        )}
-                        // deploy.name === null
-                      >
-                        X
-                      </button>
-                      <hr />
-                    </div>
-                  )
-                )}
-              </div>
-            )}
+            <div>
+              {this.state.deploys.map((deploy, index) =>(
+                <div key={index}>
+                  <p>{deploy}</p>
+                </div>
+              ))}
+            </div>
+
+          
+
           </div>
         </div>
       </div>
