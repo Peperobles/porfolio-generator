@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  proyectsId: {
+  proyectsName: {
     type: Array,
     required: true
   }

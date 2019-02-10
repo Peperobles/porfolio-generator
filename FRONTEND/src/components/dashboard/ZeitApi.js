@@ -7,11 +7,11 @@ class ZeitApi extends Component {
     super();
     this.state = {
       deploys: [
-        // {
-        //   id: null,
-        //   name: null,
-        //   url: null
-        // }
+        {
+          id: null,
+          name: null,
+          url: null
+        }
       ],
 
       // Personal Info
@@ -19,7 +19,7 @@ class ZeitApi extends Component {
       userLastName: "",
       userInfo: "",
 
-      email: "otro@gmail.com",
+      email: "cuc@cuc.com",
       linkedin: "",
 
       // Porfolio Info
@@ -62,9 +62,19 @@ class ZeitApi extends Component {
 
   // DELETE FROM API AND SPLICE ON STATE
   handleClickDelete = (id, index) => {
+    // Remove from state
     let deploysArray = this.state.deploys;
     deploysArray.splice(index, 1);
 
+    // Delete from database
+    axios
+      .post("projects/deletedeploy", {
+        email: this.state.email,
+        id: id
+      })
+      .then(response=>console.log(response));
+
+    // Delete from zeit
     axios
       .delete("https://api.zeit.co/v5/now/deployments/" + id, {
         headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
@@ -77,19 +87,19 @@ class ZeitApi extends Component {
     axios
       .post("projects/getprojects", { email: this.state.email })
       .then(response =>
-          // Index+1 to avoid duplicate data when click
-          response.data.proyectsId.map((deploy, index) =>
-            this.state.deploys[index + 1] === undefined
-              ? this.setState(previousState => ({
-                  deploys: [
-                    ...previousState.deploys,
-                    deploy
-                  ]
-                }))
-              : console.log()
-          )
-        );
-      // .then(response => console.log(response.data.proyectsId));
+        // Index+1 to avoid duplicate data when click
+        response.data.proyectsName.map((deploy, index) =>
+          this.state.deploys[index + 1] === undefined
+            ? this.setState(previousState => ({
+                deploys: [
+                  ...previousState.deploys,
+                  { id: deploy.id, name: deploy.name, url: deploy.url }
+                ]
+              }))
+            : console.log()
+        )
+      );
+    // .then(response => console.log(response.data.proyectsId));
   };
 
   // GET OF ALL PROJECTS DEPLOYS
@@ -237,7 +247,8 @@ class ZeitApi extends Component {
       .then(response =>
         // When get url back as a response, set state and go to a link in render
         this.setState({
-          url: `https://${response.data.url}`,
+          // url: `https://${response.data.url}`,
+          url: response.data.url,
           projectUrlName: `VER PORFOLIO - ${this.state.porfolioName}`,
           zeitId: response.data.id,
 
@@ -255,7 +266,9 @@ class ZeitApi extends Component {
       axios
         .post("projects/addprojects", {
           email: this.state.email,
-          proyectsId: this.state.zeitId
+          proyectsId: this.state.zeitId,
+          proyectsName: this.state.porfolioName,
+          proyectUrl: this.state.url
         })
         .then(response => console.log(response));
     }
@@ -721,16 +734,46 @@ class ZeitApi extends Component {
             <button className="btn btn-secondary" onClick={this.handleClickGet}>
               Ver Deploys
             </button>
-            <div>
-              {this.state.deploys.map((deploy, index) =>(
-                <div key={index}>
-                  <p>{deploy}</p>
+            <div className="col-6">
+              {this.state.deploys[1] === undefined ? (
+                console.log()
+              ) : (
+                <div id="deployContainer">
+                  {this.state.deploys.map((deploy, index) =>
+                    deploy.name === null ? (
+                      console.log()
+                    ) : (
+                      <div key={deploy.id} className="deployContainer">
+                        <p>Nombre: {deploy.name}</p>
+                        <p>
+                          Url:
+                          <a
+                            href={`https://${deploy.url}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            https://{deploy.url}
+                          </a>
+                        </p>
+                        {/* <p>Url: {deploy.url}</p> */}
+                        <button
+                          className="btn btn-danger"
+                          onClick={this.handleClickDelete.bind(
+                            this,
+                            deploy.id,
+                            index
+                          )}
+                          // deploy.name === null
+                        >
+                          X
+                        </button>
+                        <hr />
+                      </div>
+                    )
+                  )}
                 </div>
-              ))}
+              )}
             </div>
-
-          
-
           </div>
         </div>
       </div>
