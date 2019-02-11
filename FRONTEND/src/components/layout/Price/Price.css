@@ -1,0 +1,13 @@
+#price{
+    min-height: 50vh;
+}
+
+#priceText{
+    min-height: 30vh;
+    background: #00CA9D;
+}
+
+#priceText .row{
+    min-height: 30vh;
+    color: white;
+}

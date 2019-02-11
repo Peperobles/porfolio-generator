@@ -27,9 +27,9 @@ import phone from "../../../assets/img/phone-flip.png";
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12">
-                <h4>Employee Well-being Made Simple</h4>
-                <p>HOLAasdfasdf</p>
-                <button className="btn btn-info">MÁS INFO</button>
+                <h4>Deploy your portfolio Fast</h4>
+                <p>Show your skills</p>
+                <button className="btn btn-info">Try it today</button>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ import phone from "../../../assets/img/phone-flip.png";
               </div>
               <div className="col-sm-4 p-4">
                 <span className="rounded-circle bg-gradient-info p-3">#2</span>
-                <h6 className="mt-3">CREATE PORFOLIO</h6>
+                <h6 className="mt-3">CREATE PORTFOLIO</h6>
                 <p>Fill it with your info</p>
               </div>
               <div className="col-sm-4 p-4">

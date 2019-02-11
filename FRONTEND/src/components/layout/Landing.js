@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import HeroAnim from "./Hero/HeroAnim"
 import ProductAnim from "./Product/ProductAnim"
 import IconsBoxAnim from "./IconsBox/IconsBoxAnim"
+import PriceAnim from "./Price/PriceAnim"
 
 // import { Link } from "react-router-dom";    ********************** NO BORRAR VER COMO ESTA REGISTER Y LOGIN **********************
 
@@ -13,6 +14,7 @@ class Landing extends Component {
         <HeroAnim/>
         <ProductAnim/>
         <IconsBoxAnim/>
+        <PriceAnim/>
       </div>
 
 

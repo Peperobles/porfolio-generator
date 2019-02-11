@@ -6,7 +6,7 @@ export class IconsBoxContainer extends Component {
   render() {
     return (
       <div id="iconsBox">
-        <div className="container text-center">
+        <div className="container text-center shadow p-3">
           <h4 className="text-center mb-5">OUR GOALS</h4>
           <div className="row mt-4">
             <div className="col-lg-3">
