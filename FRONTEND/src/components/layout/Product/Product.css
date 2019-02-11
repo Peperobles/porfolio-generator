@@ -27,20 +27,28 @@
   position: relative;
 }
 
-#textContainer .row{
-    min-height: 40vh;
+#textContainer .row {
+  min-height: 40vh;
 }
 
-#phoneContainer img{
-    position: relative;
-    z-index: 500;
-    /* top: -130px; */
-    /* left: -20px; */
-    /* left: 600px; */
-    /* width: 20%; */
-    /* min-width: 350px; */
-    max-width: 900px;
-    /* margin: 0 auto; */
-    min-height: 300px;
-    max-height: 440px;
+#phoneContainer img {
+  position: relative;
+  z-index: 500;
+  /* top: -130px; */
+  /* left: -20px; */
+  /* left: 600px; */
+  /* width: 20%; */
+  min-width: 150px;
+  max-width: 900px;
+  /* margin: 0 auto; */
+  min-height: 300px;
+  max-height: 440px;
+}
+
+#steps {
+  color: white;
+}
+
+#steps span{
+  background: #00D2AB;
 }

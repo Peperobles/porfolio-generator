@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import HeroAnim from "./Hero/HeroAnim"
 import ProductAnim from "./Product/ProductAnim"
+import IconsBoxAnim from "./IconsBox/IconsBoxAnim"
 
 // import { Link } from "react-router-dom";    ********************** NO BORRAR VER COMO ESTA REGISTER Y LOGIN **********************
 
@@ -11,6 +12,7 @@ class Landing extends Component {
       <div>
         <HeroAnim/>
         <ProductAnim/>
+        <IconsBoxAnim/>
       </div>
 
 
