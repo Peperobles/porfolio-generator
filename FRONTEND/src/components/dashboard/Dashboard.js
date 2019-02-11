@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 // Components
-import ZeitApi from './ZeitApi'
+import ZeitApi from "./ZeitApi";
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -12,12 +12,12 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
-render() {
-
+  render() {
     const { user } = this.props.auth;
 
-return (
+    return (
       <div style={{ height: "75vh" }} className="container">
+      {console.log(this.props)}
         <div className="row">
           <div className="col-12 text-center">
             <h4>
@@ -27,17 +27,14 @@ return (
                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
               </p>
             </h4>
-            <button
-              onClick={this.onLogoutClick}
-              className="btn btn-info mt-3"
-            >
+            <button onClick={this.onLogoutClick} className="btn btn-info mt-3">
               Logout
             </button>
           </div>
         </div>
-            <h4>_HOLA_</h4>
-            <hr/>
-            <ZeitApi/>
+        <h4>_HOLA_</h4>
+        <hr />
+        <ZeitApi userid={this.props.auth.user.id}/>
       </div>
     );
   }
@@ -45,7 +42,7 @@ return (
 
 Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth

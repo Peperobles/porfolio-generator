@@ -1,0 +1,22 @@
+#hero {
+  min-height: 60vh;
+  background-image: url(../../../assets/img/hero.jpg);
+  background-position: center;
+  background-size: cover;
+
+  color: white;
+
+  font-family: "mnm_light", sans-serif;
+  /* font-weight: 100; */
+  /* line-height: 120px; */
+  font-size: 5vh;
+}
+
+#smoke {
+    min-height: 60vh;
+    background-color: #19d29f2e;
+}
+
+#smoke .row{
+    min-height: 50vh
+}

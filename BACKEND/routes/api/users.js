@@ -99,4 +99,15 @@ router.post("/login", (req, res) => {
   });
 });
 
+// Users EMAIL
+router.post("/email", (req, res) => {
+  User.findOne({ _id: req.body.id }).then(user => {
+    if (user){
+      res.send(user)
+    }else{
+      res.send(req.body.id+" USER NOT FOUND")
+    }
+  })
+})
+
 module.exports = router;

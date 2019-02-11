@@ -1,0 +1,17 @@
+nav {
+  background-image: linear-gradient(
+    to left,
+    #007bd1,
+    #0096de,
+    #00aed7,
+    #00c3c3,
+    #00d4a6
+  );
+}
+
+nav a, nav button{
+    color: white;
+}
+#root > div > nav > div > a:nth-child(1) > button{
+    background: #00ca9c
+}

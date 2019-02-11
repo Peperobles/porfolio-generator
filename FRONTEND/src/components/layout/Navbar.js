@@ -6,6 +6,9 @@ import { UncontrolledPopover, PopoverHeader } from "reactstrap";
 // Components
 import Login from "../auth/Login"
 
+// Css
+import './Navbar.css'
+
 class Navbar extends Component {
 
   render() {
@@ -16,7 +19,7 @@ class Navbar extends Component {
         </Link>
         <div>
           <Link to="/register">
-            <button className="btn btn-primary m-3">Register</button>
+            <button className="btn btn-info m-3">Register</button>
           </Link>
           <Link to="/login">
             <button className="btn">

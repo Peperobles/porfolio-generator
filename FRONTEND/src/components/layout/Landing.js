@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 
-import { Link } from "react-router-dom";
+import HeroAnim from "./Hero/HeroAnim"
+import ProductAnim from "./Product/ProductAnim"
+
+// import { Link } from "react-router-dom";    ********************** NO BORRAR VER COMO ESTA REGISTER Y LOGIN **********************
 
 class Landing extends Component {
   render() {
     return (
+      <div>
+        <HeroAnim/>
+        <ProductAnim/>
+      </div>
+
+
+
+      // NO BORRAR VER COMO TIENE EL RGISTER Y EL LOGIN
+      /*
       <div style={{ height: "75vh" }} className="container">
         <div className="row">
           <div className="col text-center">
@@ -26,6 +38,7 @@ class Landing extends Component {
           </div>
         </div>
       </div>
+      */
     );
   }
 }

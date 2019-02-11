@@ -19,7 +19,7 @@ class ZeitApi extends Component {
       userLastName: "",
       userInfo: "",
 
-      email: "cuc@cuc.com",
+      email: "",
       linkedin: "",
 
       // Porfolio Info
@@ -99,7 +99,6 @@ class ZeitApi extends Component {
             : console.log()
         )
       );
-    // .then(response => console.log(response.data.proyectsId));
   };
 
   // GET OF ALL PROJECTS DEPLOYS
@@ -274,6 +273,14 @@ class ZeitApi extends Component {
     }
   }
 
+  // Get email from DB
+  componentDidMount(){
+    axios.post("api/users/email", {
+      id: this.props.userid
+    })
+    .then(response =>this.setState({ email: response.data.email }))
+  }
+
   render() {
     // Spinner Loading...
     let loading;
@@ -294,6 +301,7 @@ class ZeitApi extends Component {
 
     return (
       <div className="container">
+
         <div className="row">
           <div className="col-6">
             <button
