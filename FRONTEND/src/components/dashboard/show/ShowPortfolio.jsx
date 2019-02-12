@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export class ShowPortfolio extends Component {
   constructor() {
@@ -13,8 +14,17 @@ export class ShowPortfolio extends Component {
           name: null,
           url: null
         }
-      ]
+      ],
+      modal: false
     };
+    this.toggle = this.toggle.bind(this);
+  }
+
+  // TOGGLE FOR MODAL
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   // GET PROJECTS DEPLOY FOR USER
@@ -58,12 +68,13 @@ export class ShowPortfolio extends Component {
       .then(this.setState({ deploys: deploysArray }));
   };
 
-  // Get email from DB
-  componentDidMount(){
-    axios.post("api/users/email", {
-      id: this.props.userid
-    })
-    .then(response =>this.setState({ email: response.data.email }))
+  // GET EMAIL FROM DB
+  componentDidMount() {
+    axios
+      .post("api/users/email", {
+        id: this.props.userid
+      })
+      .then(response => this.setState({ email: response.data.email }));
   }
 
   render() {
@@ -71,7 +82,7 @@ export class ShowPortfolio extends Component {
       <div>
         <div className="col-6">
           <button className="btn btn-secondary" onClick={this.handleClickGet}>
-            Ver Deploys
+            Show Portfolios
           </button>
           <div className="col-6">
             {this.state.deploys[1] === undefined ? (
@@ -94,16 +105,38 @@ export class ShowPortfolio extends Component {
                           https://{deploy.url}
                         </a>
                       </p>
-                      <button
-                        className="btn btn-danger"
-                        onClick={this.handleClickDelete.bind(
-                          this,
-                          deploy.id,
-                          index
-                        )}
-                      >
-                        X
-                      </button>
+                      <div>
+                        <Button color="danger" onClick={this.toggle}>
+                          DELETE
+                        </Button>
+                        <Modal
+                          isOpen={this.state.modal}
+                          toggle={this.toggle}
+                          className={this.props.className}
+                        >
+                          <ModalHeader toggle={this.toggle}>
+                            Are you sure?
+                          </ModalHeader>
+                          <ModalBody>
+                            Delete the portfolio will make it unable to link
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button
+                              color="danger"
+                              onClick={this.handleClickDelete.bind(
+                                this,
+                                deploy.id,
+                                index
+                              )}
+                            >
+                              Yes, Delete
+                            </Button>{" "}
+                            <Button color="secondary" onClick={this.toggle}>
+                              Cancel
+                            </Button>
+                          </ModalFooter>
+                        </Modal>
+                      </div>
                       <hr />
                     </div>
                   )

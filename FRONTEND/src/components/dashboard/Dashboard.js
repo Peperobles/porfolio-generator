@@ -8,10 +8,11 @@ import Nuevo2 from "./Nuevo2";
 
 //Correct components ----- BORRAR CUANDO ESTE TODO OK
 import ShowPortfolio from "./show/ShowPortfolio";
+import CreatePortFolio from "./create/CreatePortfolio";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 // Components
 import ZeitApi from "./ZeitApi";
@@ -23,24 +24,31 @@ class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.props)
     const { user } = this.props.auth;
 
     return (
       <div style={{ height: "75vh" }} className="container">
-        <ShowPortfolio userid={this.props.auth.user.id}/>
         <Router>
           <div className="container">
             <div className="row">
               <div className="col-6">MENU</div>
               <div className="col-6 ">
                 VISTA
+                <Route exact path="/show-portfolio" component={() => <ShowPortfolio userid={this.props.auth.user.id}/>}/>
+                <Route exact path="/create-portfolio" component={CreatePortFolio} />
                 <Route exact path="/nuevo" component={Nuevo} />
                 <Route exact path="/nuevo2" component={Nuevo2} />
               </div>
             </div>
-            {/* <Nuevo /> */}
+            <Link to="/show-portfolio">
+              <button> SHOW PORTFOLIOS</button>
+            </Link>
+            <Link to="/create-portfolio">
+              <button> CREATE PORTFOLIO</button>
+            </Link>
             <Link to="/nuevo">
-              <button> NUEVO</button>
+              <button> nuevo</button>
             </Link>
           </div>
         </Router>
@@ -59,6 +67,8 @@ class Dashboard extends Component {
           </div>
         </div>
         <h4>_HOLA_</h4>
+        <Nuevo/>
+        {/* <CreatePortFolio/> */}
         <hr />
         <ZeitApi userid={this.props.auth.user.id} />
       </div>
@@ -72,7 +82,8 @@ Dashboard.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  nuevo: state.nuevo
+  nuevo: state.nuevo,
+  createPortfolio: state.createPortfolio
 });
 export default connect(
   mapStateToProps,

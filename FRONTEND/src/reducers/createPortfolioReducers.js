@@ -1,15 +1,15 @@
-import { SEND_NUEVO } from "../actions/types";
+import { SET_PERSONAL_INFO } from "../actions/types";
 
 const initialState = {
-  test: "",
+  personalInfo: "",
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SEND_NUEVO:
+    case SET_PERSONAL_INFO:
       return {
         ...state,
-        test: action.payload
+        personalInfo: action.payload
       };
     default:
       return state;

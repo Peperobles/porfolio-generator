@@ -1,12 +1,19 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducers";
 import errorReducer from "./errorReducers";
-import reducerNuevo from "./reducerNuevo";
+import createPortfolioReducer from "./createPortfolioReducers";
+
+
+
+import reducerNuevo from "./reducerNuevo"; // QUITAR CUANDOTODO FUNCIONE POR DIOS !!!!
 
 
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  nuevo: reducerNuevo
+  createPortfolio: createPortfolioReducer,
+
+  nuevo: reducerNuevo // QUITAR CUANDOTODO FUNCIONE POR DIOS !!!!
+
 });
