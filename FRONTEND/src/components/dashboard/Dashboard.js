@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
+import Nuevo from "./Nuevo";
+
 // Components
 import ZeitApi from "./ZeitApi";
 
@@ -17,6 +19,7 @@ class Dashboard extends Component {
 
     return (
       <div style={{ height: "75vh" }} className="container">
+      <Nuevo/>
       {console.log(this.props)}
         <div className="row">
           <div className="col-12 text-center">
@@ -45,7 +48,8 @@ Dashboard.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  nuevo: state.nuevo
 });
 export default connect(
   mapStateToProps,
