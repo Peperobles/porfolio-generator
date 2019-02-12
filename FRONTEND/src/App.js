@@ -16,6 +16,8 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 
+// import Nuevo from "./components/dashboard/Nuevo";
+
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -47,6 +49,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/nuevo" component={Nuevo} /> */}
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>

@@ -4,6 +4,14 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 import Nuevo from "./Nuevo";
+import Nuevo2 from "./Nuevo2";
+
+//Correct components ----- BORRAR CUANDO ESTE TODO OK
+import ShowPortfolio from "./show/ShowPortfolio";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 // Components
 import ZeitApi from "./ZeitApi";
@@ -19,8 +27,23 @@ class Dashboard extends Component {
 
     return (
       <div style={{ height: "75vh" }} className="container">
-      <Nuevo/>
-      {console.log(this.props)}
+        <ShowPortfolio userid={this.props.auth.user.id}/>
+        <Router>
+          <div className="container">
+            <div className="row">
+              <div className="col-6">MENU</div>
+              <div className="col-6 ">
+                VISTA
+                <Route exact path="/nuevo" component={Nuevo} />
+                <Route exact path="/nuevo2" component={Nuevo2} />
+              </div>
+            </div>
+            {/* <Nuevo /> */}
+            <Link to="/nuevo">
+              <button> NUEVO</button>
+            </Link>
+          </div>
+        </Router>
         <div className="row">
           <div className="col-12 text-center">
             <h4>
@@ -37,7 +60,7 @@ class Dashboard extends Component {
         </div>
         <h4>_HOLA_</h4>
         <hr />
-        <ZeitApi userid={this.props.auth.user.id}/>
+        <ZeitApi userid={this.props.auth.user.id} />
       </div>
     );
   }
@@ -45,7 +68,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth,

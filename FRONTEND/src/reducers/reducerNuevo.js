@@ -1,7 +1,7 @@
 import { SEND_NUEVO } from "../actions/types";
 
 const initialState = {
-  test: ""
+  test: {},
 };
 
 export default function(state = initialState, action) {
