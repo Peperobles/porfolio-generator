@@ -1,7 +1,9 @@
-import { SET_PERSONAL_INFO } from "../actions/types";
+import { SET_PERSONAL_INFO, SET_PORTFOLIO_INFO, SET_PROJECTS_INFO } from "../actions/types";
 
 const initialState = {
   personalInfo: "",
+  portfolioInfo: "",
+  projectsInfo: "",
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +12,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         personalInfo: action.payload
+      };
+    case SET_PORTFOLIO_INFO:
+      return {
+        ...state,
+        portfolioInfo: action.payload
+      };
+    case SET_PROJECTS_INFO:
+      return {
+        ...state,
+        projectsInfo: action.payload
       };
     default:
       return state;

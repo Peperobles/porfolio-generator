@@ -9,6 +9,8 @@ import Nuevo2 from "./Nuevo2";
 //Correct components ----- BORRAR CUANDO ESTE TODO OK
 import ShowPortfolio from "./show/ShowPortfolio";
 import CreatePortFolio from "./create/CreatePortfolio";
+import PortfolioInfo from "./create/PortfolioInfo";
+import ProjectsInfo from "./create/ProjectsInfo";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -36,7 +38,9 @@ class Dashboard extends Component {
               <div className="col-6 ">
                 VISTA
                 <Route exact path="/show-portfolio" component={() => <ShowPortfolio userid={this.props.auth.user.id}/>}/>
-                <Route exact path="/create-portfolio" component={CreatePortFolio} />
+                <Route exact path="/create-portfolio/personal-info" component={CreatePortFolio} />
+                <Route exact path="/create-portfolio/portfolio-info" component={PortfolioInfo} />
+                <Route exact path="/create-portfolio/projects-info" component={ProjectsInfo} />
                 <Route exact path="/nuevo" component={Nuevo} />
                 <Route exact path="/nuevo2" component={Nuevo2} />
               </div>
@@ -44,7 +48,7 @@ class Dashboard extends Component {
             <Link to="/show-portfolio">
               <button> SHOW PORTFOLIOS</button>
             </Link>
-            <Link to="/create-portfolio">
+            <Link to="/create-portfolio/personal-info">
               <button> CREATE PORTFOLIO</button>
             </Link>
             <Link to="/nuevo">
@@ -83,7 +87,9 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth,
   nuevo: state.nuevo,
-  createPortfolio: state.createPortfolio
+
+  createPortfolio: state.createPortfolio,
+  
 });
 export default connect(
   mapStateToProps,

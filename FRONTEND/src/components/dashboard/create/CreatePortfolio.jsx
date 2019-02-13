@@ -105,7 +105,13 @@ export class CreatePortfolio extends Component {
   // ONCLICK, SEND TO REDUX AND TO LOCAL STORAGE
   handleClickRedux = () => {
     this.props.sendPersonalInfo(this.state);
-    let personalInfo = {userName: this.state.userName, userLastName: this.state.userLastName, userInfo: this.state.userInfo, email: this.state.email, linkedin: this.state.linkedin}
+    let personalInfo = {
+      userName: this.state.userName,
+      userLastName: this.state.userLastName,
+      userInfo: this.state.userInfo,
+      email: this.state.email,
+      linkedin: this.state.linkedin
+    };
     localStorage.setItem("PersonalInfo", JSON.stringify(personalInfo));
   };
 
@@ -217,19 +223,22 @@ export class CreatePortfolio extends Component {
             </div>
           </div>
         </form>
-        <Link to="/nuevo">
-          <button
-            disabled={!this.state.formValid}
-            onClick={this.handleClickRedux}
-          >
-            {" "}
-            NEXT
-          </button>
-        </Link>
+        <div>
+          <Link to="/create-portfolio/portfolio-info">
+            <button
+              disabled={!this.state.formValid}
+              onClick={this.handleClickRedux}
+            >
+              {" "}
+              NEXT
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
 }
+
 
 const mapStateToProps = state => ({
   userName: state.UserName,

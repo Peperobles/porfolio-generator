@@ -34,14 +34,16 @@ export class ShowPortfolio extends Component {
       .then(response =>
         // Index+1 to avoid duplicate data when click
         response.data.proyectsName.map((deploy, index) =>
-          this.state.deploys[index + 1] === undefined
-            ? this.setState(previousState => ({
-                deploys: [
-                  ...previousState.deploys,
-                  { id: deploy.id, name: deploy.name, url: deploy.url }
-                ]
-              }))
-            : console.log()
+          this.state.deploys[index + 1] === undefined ? (
+            this.setState(previousState => ({
+              deploys: [
+                ...previousState.deploys,
+                { id: deploy.id, name: deploy.name, url: deploy.url }
+              ]
+            }))
+          ) : (
+            <p>NO HAY NADA!</p>
+          )
         )
       );
   };
@@ -66,6 +68,11 @@ export class ShowPortfolio extends Component {
         headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
       })
       .then(this.setState({ deploys: deploysArray }));
+
+    // Close Modal
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   };
 
   // GET EMAIL FROM DB
@@ -85,9 +92,10 @@ export class ShowPortfolio extends Component {
             Show Portfolios
           </button>
           <div className="col-6">
-            {this.state.deploys[1] === undefined ? (
-              console.log()
+            {this.state.deploys[0] === undefined ? (
+              <p>NO HAY NADA!</p>
             ) : (
+              // console.log()
               <div id="deployContainer">
                 {this.state.deploys.map((deploy, index) =>
                   deploy.name === null ? (
