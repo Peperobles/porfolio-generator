@@ -52,22 +52,23 @@ export class ShowPortfolio extends Component {
   handleClickDelete = (id, index) => {
     // Remove from state
     let deploysArray = this.state.deploys;
+    console.log(index);
     deploysArray.splice(index, 1);
 
     // Delete from database
-    axios
-      .post("projects/deletedeploy", {
-        email: this.state.email,
-        id: id
-      })
-      .then(response => console.log(response));
+    // axios
+    //   .post("projects/deletedeploy", {
+    //     email: this.state.email,
+    //     id: id
+    //   })
+    //   .then(response => console.log(response));
 
-    // Delete from zeit
-    axios
-      .delete("https://api.zeit.co/v5/now/deployments/" + id, {
-        headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
-      })
-      .then(this.setState({ deploys: deploysArray }));
+    // // Delete from zeit
+    // axios
+    //   .delete("https://api.zeit.co/v5/now/deployments/" + id, {
+    //     headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
+    //   })
+    //   .then(this.setState({ deploys: deploysArray }));
 
     // Close Modal
     this.setState(prevState => ({
@@ -102,6 +103,7 @@ export class ShowPortfolio extends Component {
                     console.log()
                   ) : (
                     <div key={deploy.id} className="deployContainer">
+                      <p>INDICE: {index}</p>
                       <p>Nombre: {deploy.name}</p>
                       <p>
                         Url:
@@ -115,7 +117,7 @@ export class ShowPortfolio extends Component {
                       </p>
                       <div>
                         <Button color="danger" onClick={this.toggle}>
-                          DELETE
+                          DELETE {index}
                         </Button>
                         <Modal
                           isOpen={this.state.modal}
@@ -137,7 +139,7 @@ export class ShowPortfolio extends Component {
                                 index
                               )}
                             >
-                              Yes, Delete
+                              Yes, Delete {index}
                             </Button>{" "}
                             <Button color="secondary" onClick={this.toggle}>
                               Cancel
