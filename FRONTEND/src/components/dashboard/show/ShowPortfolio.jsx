@@ -56,19 +56,19 @@ export class ShowPortfolio extends Component {
     deploysArray.splice(index, 1);
 
     // Delete from database
-    // axios
-    //   .post("projects/deletedeploy", {
-    //     email: this.state.email,
-    //     id: id
-    //   })
-    //   .then(response => console.log(response));
+    axios
+      .post("projects/deletedeploy", {
+        email: this.state.email,
+        id: id
+      })
+      .then(response => console.log(response));
 
-    // // Delete from zeit
-    // axios
-    //   .delete("https://api.zeit.co/v5/now/deployments/" + id, {
-    //     headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
-    //   })
-    //   .then(this.setState({ deploys: deploysArray }));
+    // Delete from zeit
+    axios
+      .delete("https://api.zeit.co/v5/now/deployments/" + id, {
+        headers: { Authorization: "Bearer Vh3Xd5UOaFlaGMqtoutJ84dG" }
+      })
+      .then(this.setState({ deploys: deploysArray }));
 
     // Close Modal
     this.setState(prevState => ({
@@ -117,7 +117,7 @@ export class ShowPortfolio extends Component {
                       </p>
                       <div>
                         <Button color="danger" onClick={this.toggle}>
-                          DELETE {index}
+                          DELETE LAST!!!!!{index}
                         </Button>
                         <Modal
                           isOpen={this.state.modal}

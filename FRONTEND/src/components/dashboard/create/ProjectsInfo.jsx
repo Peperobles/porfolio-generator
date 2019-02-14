@@ -242,25 +242,24 @@ export class ProjectsInfo extends Component {
         <Link to="/create-portfolio/portfolio-info">
           <button onClick={this.handleClickRedux}> BACK</button>
         </Link>
-        <button
-          disabled={!this.state.formValid}
-          onClick={this.handleClickRedux}
-        >
-          {" "}
-          SEND PORTFOLIO
-        </button>
+        <Link to="/create-portfolio/post-zeit-api">
+          <button
+            disabled={!this.state.formValid}
+            onClick={this.handleClickRedux}
+          >
+            {" "}
+            SEND PORTFOLIO
+          </button>
+        </Link>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  projectName1: state.projectName1,
-  infoProject1: state.infoProject1,
-  projectName2: state.projectName2,
-  infoProject2: state.infoProject2,
-  projectName3: state.projectName3,
-  infoProject3: state.infoProject3
+  createPortfolio: state.createPortfolio,
+  auth: state.auth,
+  nuevo: state.nuevo
 });
 
 export default (ProjectsInfo = connect(

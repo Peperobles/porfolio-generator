@@ -11,6 +11,7 @@ import ShowPortfolio from "./show/ShowPortfolio";
 import CreatePortFolio from "./create/CreatePortfolio";
 import PortfolioInfo from "./create/PortfolioInfo";
 import ProjectsInfo from "./create/ProjectsInfo";
+import PostZeitApi from "./create/zeit/PostZeitApi"
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -41,6 +42,7 @@ class Dashboard extends Component {
                 <Route exact path="/create-portfolio/personal-info" component={CreatePortFolio} />
                 <Route exact path="/create-portfolio/portfolio-info" component={PortfolioInfo} />
                 <Route exact path="/create-portfolio/projects-info" component={ProjectsInfo} />
+                <Route exact path="/create-portfolio/post-zeit-api" component={PostZeitApi} />
                 <Route exact path="/nuevo" component={Nuevo} />
                 <Route exact path="/nuevo2" component={Nuevo2} />
               </div>
