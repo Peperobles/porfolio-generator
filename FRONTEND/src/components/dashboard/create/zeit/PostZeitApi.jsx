@@ -171,21 +171,16 @@ export class PostZeitApi extends Component {
   // Need to use componentDidUpdate to compare prevState and only send when is receive from the post to Zeit API
   componentDidUpdate(prevProps, prevState) {
     if (this.state.zeitId !== prevState.zeitId) {
-      console.log(this.props.createPortfolio.personalInfo.email)
-      console.log(this.state.zeitId)
-      console.log(this.props.createPortfolio.portfolioInfo.portfolioName)
-      console.log(this.state.url)
       // Update Project array from DB (SEND EMAIL + UID FROM ZEIT WHEN DEPLOY)
-      /*
+
       axios
-        .post("projects/addprojects", {
+        .post("http://localhost:3000/projects/addprojects", {
           email: this.props.createPortfolio.personalInfo.email,
           proyectsId: this.state.zeitId,
           proyectsName: this.props.createPortfolio.portfolioInfo.portfolioName,
           proyectUrl: this.state.url
         })
         .then(response => console.log(response));
-        */
     }
   }
 
@@ -201,7 +196,11 @@ export class PostZeitApi extends Component {
     } else {
       loading = (
         // Print link to project
-        <a href={`https://${this.state.url}`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`https://${this.state.url}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           VER PROYECTO {this.props.createPortfolio.portfolioInfo.portfolioName}
         </a>
       );

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
 import axios from "axios";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
+// Components
+import DeployContainer from "./DeployContainer";
 
 export class ShowPortfolio extends Component {
   constructor() {
@@ -14,17 +16,8 @@ export class ShowPortfolio extends Component {
           name: null,
           url: null
         }
-      ],
-      modal: false
+      ]
     };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  // TOGGLE FOR MODAL
-  toggle() {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
   }
 
   // GET PROJECTS DEPLOY FOR USER
@@ -102,52 +95,12 @@ export class ShowPortfolio extends Component {
                   deploy.name === null ? (
                     console.log()
                   ) : (
-                    <div key={deploy.id} className="deployContainer">
-                      <p>INDICE: {index}</p>
-                      <p>Nombre: {deploy.name}</p>
-                      <p>
-                        Url:
-                        <a
-                          href={`https://${deploy.url}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          https://{deploy.url}
-                        </a>
-                      </p>
-                      <div>
-                        <Button color="danger" onClick={this.toggle}>
-                          DELETE LAST!!!!!{index}
-                        </Button>
-                        <Modal
-                          isOpen={this.state.modal}
-                          toggle={this.toggle}
-                          className={this.props.className}
-                        >
-                          <ModalHeader toggle={this.toggle}>
-                            Are you sure?
-                          </ModalHeader>
-                          <ModalBody>
-                            Delete the portfolio will make it unable to link
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button
-                              color="danger"
-                              onClick={this.handleClickDelete.bind(
-                                this,
-                                deploy.id,
-                                index
-                              )}
-                            >
-                              Yes, Delete {index}
-                            </Button>{" "}
-                            <Button color="secondary" onClick={this.toggle}>
-                              Cancel
-                            </Button>
-                          </ModalFooter>
-                        </Modal>
-                      </div>
-                      <hr />
+                    <div key={deploy.id}>
+                      <DeployContainer
+                        deploy={deploy}
+                        index={index}
+                        delete={this.handleClickDelete}
+                      />
                     </div>
                   )
                 )}
