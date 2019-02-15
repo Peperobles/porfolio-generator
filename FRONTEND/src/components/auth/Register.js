@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 
+import Navbar from "../layout/Navbar";
+
 class Register extends Component {
   constructor() {
     super();
@@ -52,108 +54,111 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container mt-3">
-        <div className="row justify-content-center">
-          <div className="card p-3">
-            <article className="card-body">
-              <h4 className="card-title text-center mb-4 mt-1">Register</h4>
-              <hr />
-              <p className="text-info text-center">Register Now!</p>
-              <p className="text-secondary">
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-person" />
-                      </span>
+      <div>
+        <Navbar />
+        <div className="container mt-3">
+          <div className="row justify-content-center">
+            <div className="card p-3">
+              <article className="card-body">
+                <h4 className="card-title text-center mb-4 mt-1">Register</h4>
+                <hr />
+                <p className="text-info text-center">Register Now!</p>
+                <p className="text-secondary">
+                  Already have an account? <Link to="/login">Log in</Link>
+                </p>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-person" />
+                        </span>
+                      </div>
+                      <input
+                        placeholder="Name"
+                        onChange={this.onChange}
+                        value={this.state.name}
+                        error={errors.name}
+                        id="name"
+                        type="text"
+                        className={classnames("form-control", {
+                          invalid: errors.name
+                        })}
+                      />
                     </div>
-                    <input
-                      placeholder="Name"
-                      onChange={this.onChange}
-                      value={this.state.name}
-                      error={errors.name}
-                      id="name"
-                      type="text"
-                      className={classnames("form-control", {
-                        invalid: errors.name
-                      })}
-                    />
+                    <span className="text-danger">{errors.name}</span>
                   </div>
-                  <span className="text-danger">{errors.name}</span>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-mail-outline" />
-                      </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-mail-outline" />
+                        </span>
+                      </div>
+                      <input
+                        placeholder="E-mail"
+                        onChange={this.onChange}
+                        value={this.state.email}
+                        error={errors.email}
+                        id="email"
+                        type="email"
+                        className={classnames("form-control", {
+                          invalid: errors.email
+                        })}
+                      />
                     </div>
-                    <input
-                      placeholder="E-mail"
-                      onChange={this.onChange}
-                      value={this.state.email}
-                      error={errors.email}
-                      id="email"
-                      type="email"
-                      className={classnames("form-control", {
-                        invalid: errors.email
-                      })}
-                    />
+                    <span className="text-danger">{errors.email}</span>
                   </div>
-                  <span className="text-danger">{errors.email}</span>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock" />
-                      </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        placeholder="Password"
+                        onChange={this.onChange}
+                        value={this.state.password}
+                        error={errors.password}
+                        id="password"
+                        type="password"
+                        className={classnames("form-control", {
+                          invalid: errors.password
+                        })}
+                      />
                     </div>
-                    <input
-                      placeholder="Password"
-                      onChange={this.onChange}
-                      value={this.state.password}
-                      error={errors.password}
-                      id="password"
-                      type="password"
-                      className={classnames("form-control", {
-                        invalid: errors.password
-                      })}
-                    />
+                    <span className="text-danger">{errors.password}</span>
                   </div>
-                  <span className="text-danger">{errors.password}</span>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock-outline" />
-                      </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock-outline" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        placeholder="Repeat Password"
+                        value={this.state.password2}
+                        error={errors.password2}
+                        id="password2"
+                        type="password"
+                        className={classnames("form-control", {
+                          invalid: errors.password2
+                        })}
+                      />
                     </div>
-                    <input
-                      onChange={this.onChange}
-                      placeholder="Repeat Password"
-                      value={this.state.password2}
-                      error={errors.password2}
-                      id="password2"
-                      type="password"
-                      className={classnames("form-control", {
-                        invalid: errors.password2
-                      })}
-                    />
+                    <span className="text-danger">{errors.password2}</span>
                   </div>
-                  <span className="text-danger">{errors.password2}</span>
-                </div>
-                <div className="form-group">
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Register
-                  </button>
-                </div>
-              </form>
-            </article>
+                  <div className="form-group">
+                    <button type="submit" className="btn btn-primary btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </article>
+            </div>
           </div>
         </div>
       </div>

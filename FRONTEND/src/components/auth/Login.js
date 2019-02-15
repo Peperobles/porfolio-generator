@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
+import Navbar from "../layout/Navbar";
+
 class Login extends Component {
   constructor() {
     super();
@@ -52,72 +54,77 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="card p-3">
-            <article className="card-body">
-              <h4 className="card-title text-center mb-4 mt-1">Sign in</h4>
-              <hr />
-              <p className="text-info text-center">Welcome Back!</p>
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-person" />
-                      </span>
+      <div>
+        <Navbar />
+
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="card p-3">
+              <article className="card-body">
+                <h4 className="card-title text-center mb-4 mt-1">Sign in</h4>
+                <hr />
+                <p className="text-info text-center">Welcome Back!</p>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-person" />
+                        </span>
+                      </div>
+                      <input
+                        placeholder="E-mail"
+                        onChange={this.onChange}
+                        value={this.state.email}
+                        error={errors.email}
+                        id="email"
+                        type="email"
+                        className={classnames("form-control", {
+                          invalid: errors.email || errors.emailnotfound
+                        })}
+                      />
                     </div>
-                    <input
-                      placeholder="E-mail"
-                      onChange={this.onChange}
-                      value={this.state.email}
-                      error={errors.email}
-                      id="email"
-                      type="email"
-                      className={classnames("form-control", {
-                        invalid: errors.email || errors.emailnotfound
-                      })}
-                    />
+                    <span className="text-danger">
+                      {errors.email}
+                      {errors.emailnotfound}
+                    </span>
                   </div>
-                  <span className="text-danger">
-                    {errors.email}
-                    {errors.emailnotfound}
-                  </span>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-lock" />
-                      </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.password}
+                        error={errors.password}
+                        id="password"
+                        type="password"
+                        className={classnames("form-control", {
+                          invalid: errors.password || errors.passwordincorrect
+                        })}
+                        placeholder="******"
+                      />
                     </div>
-                    <input
-                      onChange={this.onChange}
-                      value={this.state.password}
-                      error={errors.password}
-                      id="password"
-                      type="password"
-                      className={classnames("form-control", {
-                        invalid: errors.password || errors.passwordincorrect
-                      })}
-                      placeholder="******"
-                    />
+                    <span className="text-danger">
+                      {errors.password}
+                      {errors.passwordincorrect}
+                    </span>
                   </div>
-                  <span className="text-danger">
-                    {errors.password}
-                    {errors.passwordincorrect}
-                  </span>
-                </div>
-                <div className="form-group">
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Login
-                  </button>
-                  <p className="text-dark">
-                    Don't have an account? <Link to="/register">Register</Link>
-                  </p>
-                </div>
-              </form>
-            </article>
+                  <div className="form-group">
+                    <button type="submit" className="btn btn-primary btn-block">
+                      Login
+                    </button>
+                    <p className="text-dark">
+                      Don't have an account?{" "}
+                      <Link to="/register">Register</Link>
+                    </p>
+                  </div>
+                </form>
+              </article>
+            </div>
           </div>
         </div>
       </div>
@@ -132,7 +139,7 @@ Login.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors,
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,

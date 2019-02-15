@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Navbar from "./Navbar";
 import HeroAnim from "./Hero/HeroAnim"
 import ProductAnim from "./Product/ProductAnim"
 import IconsBoxAnim from "./IconsBox/IconsBoxAnim"
@@ -9,6 +10,7 @@ class Landing extends Component {
   render() {
     return (
       <div>
+        <Navbar/>
         <HeroAnim/>
         <ProductAnim/>
         <IconsBoxAnim/>

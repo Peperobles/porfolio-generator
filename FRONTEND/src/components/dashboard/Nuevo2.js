@@ -6,9 +6,10 @@ import Nuevo2Contenido from "./Nuevo2Contenido"
 
 export default function Nuevo2() {
   const props = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    config: { delay: 2000, duration: 2000 }
+    to:[{background:'#343A40',height: "100vh", marginRight: 0},{background:"#343A40", marginRight:1600},{background:"white", marginRight:-16000}, {background:"red", marginRight:0}],
+    from: { background: '#343A40', height: "100vh",marginRight: 1500 },
+    config: [{ duration: 500 },{ duration: 500},{ duration: 10}, {duration: 500}],
+    // delay: 1000
   });
   return (
     <div>

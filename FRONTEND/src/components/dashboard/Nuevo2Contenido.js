@@ -4,7 +4,7 @@ export class Nuevo2Contenido extends Component {
   render() {
     return (
       <div>
-        AQUIA EL CONTENIDO ENTERO DE NUEVO2
+        <p>asdfasdfasdfasdfAQUIA EL CONTENIDO ENTERO DE NUEVO2</p>
       </div>
     )
   }
