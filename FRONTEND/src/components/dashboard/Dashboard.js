@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-import Nuevo from "./Nuevo";
-import Nuevo2 from "./Nuevo2";
+// import Nuevo from "./Nuevo";
+// import Nuevo2 from "./Nuevo2";
 
 //Correct components ----- BORRAR CUANDO ESTE TODO OK
 import ShowPortfolio from "./show/ShowPortfolio";
@@ -20,9 +20,23 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // Components
 // import ZeitApi from "./ZeitApi";
 
+import SideNav, {
+  NavItem,
+  NavIcon,
+  NavText
+} from "@trendmicro/react-sidenav";
+
+// Be sure to include styles at some point, probably during your bootstraping
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./Dashboard.css";
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      // bgColor: "",
+    };
+  }
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -33,79 +47,93 @@ class Dashboard extends Component {
     // const { user } = this.props.auth;
 
     return (
-      <div style={{ height: "100vh" }} className="container-fluid">
+      <div>
         <Router>
-          <div style={{ height: "100vh" }} className="row">
-            <div className="col-2 bg-dark">
-              <div style={{ height: "100vh" }} className="row">
-                <div className="col-12 align-self-center text-light">
-                  <div className="row" style={{ height: "30vh" }}>
-                    <div className="col-12 align-self-center">
-                      <Link to="/dashboard">
-                        <i className="mdi mdi-dashboard mdi-5x" />
-                        <p>DASHBOARD</p>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="row" style={{ height: "30vh" }}>
-                    <div className="col-12 align-self-center">
-                      <Link to="/show-portfolio">
-                        <i className="mdi mdi-slideshow mdi-5x" />
-                        <p>SHOW PORTFOLIOS</p>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="row" style={{ height: "30vh" }}>
-                    <div className="col-12 align-self-center">
-                      <Link to="/create-portfolio/personal-info">
-                        <i className="mdi mdi-import-contacts mdi-5x" />
-                        <p>CREATE PORTFOLIO</p>
-                      </Link>
-                    </div>
-                    <div className="col-12 align-self-center">
-                      <Link to="/nuevo2">
-                        <i className="mdi mdi-import-contacts mdi-5x" />
-                        <p>NUEVO2</p>
-                      </Link>
-                    </div>
-                  </div>
-                  <div>
-                    <p>Welcome {this.props.auth.user.name}</p>
-                  </div>
-                  <button onClick={this.onLogoutClick} className="btn btn-danger">Logout</button>
+          <div>
+            <SideNav
+              id="dashboard"
+              onSelect={selected => {
+                // this.setState({
+                //   bgColor: "black"
+                // })
+              }}
+            >
+              <SideNav.Toggle />
+              <SideNav.Nav>
+                <NavItem eventKey="dashboard">
+                  <NavIcon>
+                    <i
+                      className="far fa-address-card"
+                      style={{ fontSize: "1.75em" }}
+                    />
+                  </NavIcon>
+                  <NavText>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </NavText>
+                  <NavItem />
+                </NavItem>
+                <NavItem eventKey="show">
+                  <NavIcon>
+                    <i
+                      className="fas fa-briefcase"
+                      style={{ fontSize: "1.75em" }}
+                    />
+                  </NavIcon>
+                  <NavText>
+                    <Link to="/show-portfolio">Portfolios</Link>
+                  </NavText>
+                  <NavItem />
+                </NavItem>
+                <NavItem eventKey="create">
+                  <NavIcon>
+                    <i
+                      className="fas fa-marker"
+                      style={{ fontSize: "1.75em" }}
+                    />
+                  </NavIcon>
+                  <NavText>
+                    <Link to="/create-portfolio/personal-info">
+                      Create Portfolio
+                    </Link>
+                  </NavText>
+                  <NavItem />
+                </NavItem>
+                <hr/>
+                <p>LOGOUT</p>
+              </SideNav.Nav>
+            </SideNav>
+            <div className="container">
+              <div className="row">
+                <div className="col-12">
+                  <Route
+                    exact
+                    path="/show-portfolio"
+                    component={() => (
+                      <ShowPortfolio userid={this.props.auth.user.id} />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/create-portfolio/personal-info"
+                    component={CreatePortFolio}
+                  />
+                  <Route
+                    exact
+                    path="/create-portfolio/portfolio-info"
+                    component={PortfolioInfo}
+                  />
+                  <Route
+                    exact
+                    path="/create-portfolio/projects-info"
+                    component={ProjectsInfo}
+                  />
+                  <Route
+                    exact
+                    path="/create-portfolio/post-zeit-api"
+                    component={PostZeitApi}
+                  />
                 </div>
               </div>
-            </div>
-            <div className="col-10 text-center p-0">
-              <Route
-                exact
-                path="/show-portfolio"
-                component={() => (
-                  <ShowPortfolio userid={this.props.auth.user.id} />
-                )}
-              />
-              <Route
-                exact
-                path="/create-portfolio/personal-info"
-                component={CreatePortFolio}
-              />
-              <Route
-                exact
-                path="/create-portfolio/portfolio-info"
-                component={PortfolioInfo}
-              />
-              <Route
-                exact
-                path="/create-portfolio/projects-info"
-                component={ProjectsInfo}
-              />
-              <Route
-                exact
-                path="/create-portfolio/post-zeit-api"
-                component={PostZeitApi}
-              />
-              <Route exact path="/nuevo" component={Nuevo} />
-              <Route exact path="/nuevo2" component={Nuevo2} />
             </div>
           </div>
         </Router>

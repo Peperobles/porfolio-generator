@@ -11,7 +11,7 @@ router.post("/addprojects", (req, res) => {
       User.findOneAndUpdate(
         { email: req.body.email },
         {
-          $addToSet: { proyectsName: {name:req.body.proyectsName, id: req.body.proyectsId, url: req.body.proyectUrl} }
+          $addToSet: { proyectsName: {name:req.body.proyectsName, id: req.body.proyectsId, url: req.body.proyectUrl, angular: req.body.angularIcon, react: req.body.reactIcon} }
         }
       ).then(res.send("Added ProyectId"));
     } else {

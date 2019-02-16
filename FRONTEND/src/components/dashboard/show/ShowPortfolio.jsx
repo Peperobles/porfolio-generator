@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import axios from "axios";
 
+import { connect } from "react-redux";
+
 // Components
 import DeployContainer from "./DeployContainer";
 
@@ -14,32 +16,13 @@ export class ShowPortfolio extends Component {
         {
           id: null,
           name: null,
-          url: null
+          url: null,
+          react: null,
+          angular: null
         }
       ]
     };
   }
-
-  // GET PROJECTS DEPLOY FOR USER
-  handleClickGet = () => {
-    axios
-      .post("projects/getprojects", { email: this.state.email })
-      .then(response =>
-        // Index+1 to avoid duplicate data when click
-        response.data.proyectsName.map((deploy, index) =>
-          this.state.deploys[index + 1] === undefined ? (
-            this.setState(previousState => ({
-              deploys: [
-                ...previousState.deploys,
-                { id: deploy.id, name: deploy.name, url: deploy.url }
-              ]
-            }))
-          ) : (
-            <p>NO HAY NADA!</p>
-          )
-        )
-      );
-  };
 
   // DELETE FROM API AND SPLICE ON STATE
   handleClickDelete = (id, index) => {
@@ -69,33 +52,48 @@ export class ShowPortfolio extends Component {
     }));
   };
 
-  // GET EMAIL FROM DB
+  // GET EMAIL FROM STORE AN PORTFOLIOS FROM DB
   componentDidMount() {
+    // Set state from Redux props
+    this.setState({
+      email: this.props.auth.user.email
+    });
+
     axios
-      .post("api/users/email", {
-        id: this.props.userid
-      })
-      .then(response => this.setState({ email: response.data.email }));
+      .post("projects/getprojects", { email: this.props.auth.user.email })
+      .then(response =>
+        // Index+1 to avoid duplicate data when click
+        response.data.proyectsName.map((deploy, index) =>
+          this.state.deploys[index + 1] === undefined ? (
+            this.setState(previousState => ({
+              deploys: [
+                ...previousState.deploys,
+                { id: deploy.id, name: deploy.name, url: deploy.url, react: deploy.react, angular: deploy.angular }
+              ]
+            }))
+          ) : (
+            <p>NO HAY NADA!</p>
+          )
+        )
+      );
   }
 
   render() {
     return (
       <div>
-        <div className="col-6">
-          <button className="btn btn-secondary" onClick={this.handleClickGet}>
-            Show Portfolios
-          </button>
-          <div className="col-6">
-            {this.state.deploys[0] === undefined ? (
-              <p>NO HAY NADA!</p>
+        {console.log(this.props)}
+        <div className="container">
+          <div className="row">
+            {this.state.deploys[1] === undefined ? (
+              <p>NO PORTFOLIOS :(</p>
             ) : (
               // console.log()
-              <div id="deployContainer">
+              <div id="deployContainer" class="row">
                 {this.state.deploys.map((deploy, index) =>
                   deploy.name === null ? (
                     console.log()
                   ) : (
-                    <div key={deploy.id}>
+                    <div key={deploy.id} className="col-4">
                       <DeployContainer
                         deploy={deploy}
                         index={index}
@@ -112,5 +110,11 @@ export class ShowPortfolio extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
 
-export default ShowPortfolio;
+export default connect(
+  mapStateToProps,
+  {}
+)(ShowPortfolio);

@@ -178,7 +178,9 @@ export class PostZeitApi extends Component {
           email: this.props.createPortfolio.personalInfo.email,
           proyectsId: this.state.zeitId,
           proyectsName: this.props.createPortfolio.portfolioInfo.portfolioName,
-          proyectUrl: this.state.url
+          proyectUrl: this.state.url,
+          angularIcon: this.props.createPortfolio.portfolioInfo.angularIcon,
+          reactIcon: this.props.createPortfolio.portfolioInfo.reactIcon,
         })
         .then(response => console.log(response));
     }
