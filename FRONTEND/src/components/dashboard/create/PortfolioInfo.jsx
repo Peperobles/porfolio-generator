@@ -8,6 +8,10 @@ import { sendPortfolioInfo } from "../../../actions/createPortfolioActions";
 
 // Component
 import { FormErrors } from "./formerrors/FormErrors";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
+
+import "./PortfolioInfo.css"
 
 export class PortfolioInfo extends Component {
   constructor() {
@@ -104,7 +108,134 @@ export class PortfolioInfo extends Component {
   render() {
     return (
       <div>
-        <form noValidate>
+        <div className="mt-3 p-1">
+          <Progress
+            theme={{
+              active: {
+                symbol: " ",
+                color: "rgb(0, 182, 208)"
+              }
+            }}
+            percent={70}
+          />
+        </div>
+        <div className="container shadow">
+          <div id="create-portfolio-row" className="row">
+            <div id="create-portfolio-container" className="col-lg-4 p-0">
+              <div id="smoke-create-portfolio">
+                <div
+                  className="row align-items-center"
+                  style={{ height: "80vh" }}
+                >
+                  <div className="col-12 text-center p-0">
+                    <span className="rounded-circle bg-info p-3 text-white">
+                      <b>02</b>
+                    </span>
+                    <span className="text-white ml-2">PORTFOLIO INFO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <form noValidate>
+                <div className="panel panel-default”">
+                  <FormErrors formErrors={this.state.formErrors} />
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    placeholder="Portfolio Name"
+                    onChange={this.onChange}
+                    value={this.state.portfolioName}
+                    id="portfolioName"
+                    type="text"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Portfolio Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={this.onChange}
+                    id="reactIcon"
+                  />
+                  <label
+                    // className="label-form-groupe"
+                    // htmlFor="dynamic-label-input"
+                  >
+                    React
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.userInfo}
+                    id="userInfo"
+                    type="text"
+                    placeholder="FrontEnd - BackEnd - FullStack"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    FrontEnd - BackEnd - FullStack
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    id="email"
+                    type="text"
+                    placeholder="Email"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Email
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.linkedin}
+                    id="linkedin"
+                    type="text"
+                    placeholder="Linkedin Profile Url"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Linkedin Profile Url
+                  </label>
+                </div>
+              </form>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4 offset-md-8">
+                    <Link to="/create-portfolio/portfolio-info">
+                      <button
+                        className="btn btn-info btn-lg btn-block"
+                        disabled={!this.state.formValid}
+                        onClick={this.handleClickRedux}
+                      >
+                        {" "}
+                        NEXT
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <form noValidate>
           <div className="container border">
             <h4>PORTFOLIO INFO:</h4>
             <div className="panel panel-default”">
@@ -200,40 +331,35 @@ export class PortfolioInfo extends Component {
               </div>
             </div>
           </div>
-          </form>
-          <Link to="/create-portfolio/personal-info">
-            <button
-              onClick={this.handleClickRedux}
-            >
-              {" "}
-              BACK
-            </button>
-          </Link>
-          <Link to="/create-portfolio/projects-info">
-            <button
-              disabled={!this.state.formValid}
-              onClick={this.handleClickRedux}
-            >
-              {" "}
-              NEXT
-            </button>
-          </Link>
-        </div>
+        </form>
+        <Link to="/create-portfolio/personal-info">
+          <button onClick={this.handleClickRedux}> BACK</button>
+        </Link>
+        <Link to="/create-portfolio/projects-info">
+          <button
+            disabled={!this.state.formValid}
+            onClick={this.handleClickRedux}
+          >
+            {" "}
+            NEXT
+          </button>
+        </Link> */}
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    portfolioName: state.portfolioName,
-    gitHubIcon: state.gitHubIcon,
-    reactIcon: state.reactIcon,
-    jsIcon: state.jsIcon,
-    cssIcon: state.cssIcon,
-    htmlIcon: state.htmlIcon,
-    angularIcon: state.angularIcon,
-})
+  portfolioName: state.portfolioName,
+  gitHubIcon: state.gitHubIcon,
+  reactIcon: state.reactIcon,
+  jsIcon: state.jsIcon,
+  cssIcon: state.cssIcon,
+  htmlIcon: state.htmlIcon,
+  angularIcon: state.angularIcon
+});
 
 export default (PortfolioInfo = connect(
-    mapStateToProps,
-    {sendPortfolioInfo}
+  mapStateToProps,
+  { sendPortfolioInfo }
 )(PortfolioInfo));

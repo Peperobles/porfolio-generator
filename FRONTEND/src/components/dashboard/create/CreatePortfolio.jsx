@@ -143,7 +143,7 @@ export class CreatePortfolio extends Component {
           <Progress
             theme={{
               active: {
-                symbol: ' ',
+                symbol: " ",
                 color: "rgb(0, 182, 208)"
               }
             }}
@@ -159,7 +159,7 @@ export class CreatePortfolio extends Component {
                   style={{ height: "80vh" }}
                 >
                   <div className="col-12 text-center p-0">
-                    <span class="rounded-circle bg-info p-3 text-white">
+                    <span className="rounded-circle bg-info p-3 text-white">
                       <b>01</b>
                     </span>
                     <span className="text-white ml-2">PERSONAL INFO</span>
@@ -169,104 +169,101 @@ export class CreatePortfolio extends Component {
             </div>
             <div className="col-lg-8">
               <form noValidate>
-                <div className="container border">
-                  <h4>INFO PERSONAL:</h4>
-                  <div className="panel panel-default”">
-                    <FormErrors formErrors={this.state.formErrors} />
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.userName}
-                        id="userName"
-                        type="text"
-                        placeholder="Nombre"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.userLastName}
-                        id="userLastName"
-                        type="text"
-                        placeholder="Apellidos"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.userInfo}
-                        id="userInfo"
-                        type="text"
-                        placeholder="Full Stack - Front End..."
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.email}
-                        id="email"
-                        type="text"
-                        placeholder="email"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
-                      <input
-                        onChange={this.onChange}
-                        value={this.state.linkedin}
-                        id="linkedin"
-                        type="text"
-                        placeholder="linkedin"
-                      />
-                    </div>
-                  </div>
+                <div className="panel panel-default”">
+                  <FormErrors formErrors={this.state.formErrors} />
                 </div>
-                <div>
-                  <Link to="/create-portfolio/portfolio-info">
-                    <button
-                      disabled={!this.state.formValid}
-                      onClick={this.handleClickRedux}
-                    >
-                      {" "}
-                      NEXT
-                    </button>
-                  </Link>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.userName}
+                    id="userName"
+                    type="text"
+                    placeholder="Name"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.userLastName}
+                    id="userLastName"
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Last Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.userInfo}
+                    id="userInfo"
+                    type="text"
+                    placeholder="FrontEnd - BackEnd - FullStack"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    FrontEnd - BackEnd - FullStack
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    id="email"
+                    type="text"
+                    placeholder="Email"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Email
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.linkedin}
+                    id="linkedin"
+                    type="text"
+                    placeholder="Linkedin Profile Url"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Linkedin Profile Url
+                  </label>
                 </div>
               </form>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4 offset-md-8">
+                    <Link to="/create-portfolio/portfolio-info">
+                      <button
+                        className="btn btn-info btn-lg btn-block"
+                        disabled={!this.state.formValid}
+                        onClick={this.handleClickRedux}
+                      >
+                        {" "}
+                        NEXT
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

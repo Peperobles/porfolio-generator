@@ -6,7 +6,7 @@ export const FormErrors = ({ formErrors }) =>
             if (formErrors[fieldName].length > 0) {
                 return (
                     // For every field name send a message
-                    <div key={i} className="alert alert-warning" role="alert">
+                    <div key={i} className="alert alert-info" role="alert">
                         {fieldName} {formErrors[fieldName]}
                     </div>
                 )
