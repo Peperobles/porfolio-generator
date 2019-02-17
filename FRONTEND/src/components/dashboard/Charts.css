@@ -1,0 +1,28 @@
+.centering{
+    height: 80px;
+}
+
+#cube1{
+    background-color: #00ccb4;
+}
+#cube1-h3{
+    color: #00ccb4;
+}
+#cube2{
+    background-color: #00bfc7;
+}
+#cube2-h3{
+    color: #00bfc7;
+}
+#cube3{
+    background-color: #00b0d5;
+}
+#cube3-h3{
+    color: #00b0d5;
+}
+#cube4{
+    background-color: #009add;
+}
+#cube4-h3{
+    color: #009add;
+}

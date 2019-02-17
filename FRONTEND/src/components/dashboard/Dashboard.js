@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-// import Nuevo from "./Nuevo";
+import {Chart} from "./Chart";
 // import Nuevo2 from "./Nuevo2";
 
 //Correct components ----- BORRAR CUANDO ESTE TODO OK
@@ -68,7 +68,7 @@ class Dashboard extends Component {
                     />
                   </NavIcon>
                   <NavText>
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/chart">Dashboard</Link>
                   </NavText>
                   <NavItem />
                 </NavItem>
@@ -131,6 +131,11 @@ class Dashboard extends Component {
                     exact
                     path="/create-portfolio/post-zeit-api"
                     component={PostZeitApi}
+                  />
+                  <Route
+                    exact
+                    path="/chart"
+                    component={Chart}
                   />
                 </div>
               </div>

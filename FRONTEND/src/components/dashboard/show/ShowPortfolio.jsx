@@ -93,7 +93,7 @@ export class ShowPortfolio extends Component {
                   deploy.name === null ? (
                     console.log()
                   ) : (
-                    <div key={deploy.id} className="col-4">
+                    <div key={deploy.id} className="col-lg-4">
                       <DeployContainer
                         deploy={deploy}
                         index={index}
