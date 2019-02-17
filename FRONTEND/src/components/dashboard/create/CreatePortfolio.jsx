@@ -8,6 +8,10 @@ import { sendPersonalInfo } from "../../../actions/createPortfolioActions";
 
 // Component
 import { FormErrors } from "./formerrors/FormErrors";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
+
+import "./CreatePortfolio.css";
 
 export class CreatePortfolio extends Component {
   constructor() {
@@ -135,110 +139,141 @@ export class CreatePortfolio extends Component {
   render() {
     return (
       <div>
-        <form noValidate>
-          <div className="container border">
-            <h4>INFO PERSONAL:</h4>
-            <div className="panel panel-default”">
-              <FormErrors formErrors={this.state.formErrors} />
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-lock" />
-                  </span>
+        <div className="mt-3 p-1">
+          <Progress
+            theme={{
+              active: {
+                symbol: ' ',
+                color: "rgb(0, 182, 208)"
+              }
+            }}
+            percent={35}
+          />
+        </div>
+        <div className="container shadow">
+          <div id="create-portfolio-row" className="row">
+            <div id="create-portfolio-container" className="col-lg-4 p-0">
+              <div id="smoke-create-portfolio">
+                <div
+                  className="row align-items-center"
+                  style={{ height: "80vh" }}
+                >
+                  <div className="col-12 text-center p-0">
+                    <span class="rounded-circle bg-info p-3 text-white">
+                      <b>01</b>
+                    </span>
+                    <span className="text-white ml-2">PERSONAL INFO</span>
+                  </div>
                 </div>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.userName}
-                  id="userName"
-                  type="text"
-                  placeholder="Nombre"
-                />
               </div>
             </div>
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-lock" />
-                  </span>
+            <div className="col-lg-8">
+              <form noValidate>
+                <div className="container border">
+                  <h4>INFO PERSONAL:</h4>
+                  <div className="panel panel-default”">
+                    <FormErrors formErrors={this.state.formErrors} />
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.userName}
+                        id="userName"
+                        type="text"
+                        placeholder="Nombre"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.userLastName}
+                        id="userLastName"
+                        type="text"
+                        placeholder="Apellidos"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.userInfo}
+                        id="userInfo"
+                        type="text"
+                        placeholder="Full Stack - Front End..."
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.email}
+                        id="email"
+                        type="text"
+                        placeholder="email"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-lock" />
+                        </span>
+                      </div>
+                      <input
+                        onChange={this.onChange}
+                        value={this.state.linkedin}
+                        id="linkedin"
+                        type="text"
+                        placeholder="linkedin"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.userLastName}
-                  id="userLastName"
-                  type="text"
-                  placeholder="Apellidos"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-lock" />
-                  </span>
+                <div>
+                  <Link to="/create-portfolio/portfolio-info">
+                    <button
+                      disabled={!this.state.formValid}
+                      onClick={this.handleClickRedux}
+                    >
+                      {" "}
+                      NEXT
+                    </button>
+                  </Link>
                 </div>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.userInfo}
-                  id="userInfo"
-                  type="text"
-                  placeholder="Full Stack - Front End..."
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-lock" />
-                  </span>
-                </div>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.email}
-                  id="email"
-                  type="text"
-                  placeholder="email"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-lock" />
-                  </span>
-                </div>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.linkedin}
-                  id="linkedin"
-                  type="text"
-                  placeholder="linkedin"
-                />
-              </div>
+              </form>
             </div>
           </div>
-        </form>
-        <div>
-          <Link to="/create-portfolio/portfolio-info">
-            <button
-              disabled={!this.state.formValid}
-              onClick={this.handleClickRedux}
-            >
-              {" "}
-              NEXT
-            </button>
-          </Link>
         </div>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   userName: state.UserName,

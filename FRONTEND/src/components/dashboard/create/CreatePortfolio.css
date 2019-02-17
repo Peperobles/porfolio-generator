@@ -1,0 +1,14 @@
+#create-portfolio-row{
+    min-height: 90vh;
+}
+
+#create-portfolio-container{
+    background-image: url(../../../assets/img/computer1.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#smoke-create-portfolio {
+    height: 90vh;
+    background-color: #19d2b4cf;
+}
