@@ -1,18 +1,28 @@
-#create-portfolio-row {
-  min-height: 90vh;
-}
-
-#create-portfolio-container {
-  background-image: url(../../../assets/img/computer-min.jpg);
+#RegisterContainer {
+  background-image: url(../../assets/img/signup-min.jpg);
+  min-height: 91vh;
   background-position: center;
   background-size: cover;
+  padding: 0;
 }
 
-#smoke-create-portfolio {
-  height: 90vh;
-  background-color: #19d2b4cf;
+#ResgisterSmoke {
+  min-height: 91vh;
+  background-image: linear-gradient(
+    to left,
+    #007bd18a,
+    #0096decf,
+    #00aed7ad,
+    #00c3c39e,
+    #00d4a699
+  );
+  padding: 0;
+}
+#ResgisterSmoke > div {
+  margin: 0;
 }
 
+/* FORM */
 .form-groupe {
   position: relative;
   padding-top: 1.5rem;
@@ -27,7 +37,7 @@
   opacity: 1;
   transform: translateY(0);
   transition: all 0.2s ease-out;
-  color:#00bfc6;
+  color: #00bfc6;
 }
 
 input:placeholder-shown + .label-form-groupe {
@@ -35,19 +45,15 @@ input:placeholder-shown + .label-form-groupe {
   transform: translateY(1rem);
 }
 
-.form-groupe input[type="text"] {
+.form-groupe input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #80808057;
   transition: 0.4s ease-in-out;
 }
 
-.form-groupe input[type="text"]:focus {
+.form-groupe input:focus {
   outline: none;
   border: none;
   border-bottom: 1px solid #00bfc6;
-}
-
-#create-portfolio-row > div.col-lg-8 > div > div > div > a:hover{
-    text-decoration: none;
 }

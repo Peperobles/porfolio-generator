@@ -9,6 +9,8 @@
   );
   box-shadow: 5px 3px 20px 5px #80808045;
 }
+
+/* LOGOUT BUTTON ON SIDENAV */
 #dashboard
   > div
   > div:nth-child(5)

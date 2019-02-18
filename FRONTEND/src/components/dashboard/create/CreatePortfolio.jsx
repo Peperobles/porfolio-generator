@@ -133,7 +133,7 @@ export class CreatePortfolio extends Component {
           linkedin: personalInfoStorage.linkedin,
           formValid: !this.state.formValid
         })
-      : console.log();
+      : this.setState({ email: this.props.auth.user.email });
   }
 
   render() {
@@ -277,7 +277,8 @@ const mapStateToProps = state => ({
   userLastName: state.userLastName,
   userInfo: state.userInfo,
   email: state.email,
-  linkedin: state.linkedin
+  linkedin: state.linkedin,
+  auth: state.auth
 });
 export default (CreatePortfolio = connect(
   mapStateToProps,

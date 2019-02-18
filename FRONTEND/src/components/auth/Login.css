@@ -1,0 +1,23 @@
+#LoginContainer {
+    background-image: url(../../assets/img/computer-min.jpg);
+    min-height: 91vh;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+  }
+  
+  #LoginSmoke {
+    min-height: 91vh;
+    background-image: linear-gradient(
+      to left,
+      #007bd18a,
+      #0096decf,
+      #00aed7ad,
+      #00c3c39e,
+      #00d4a699
+    );
+    padding: 0;
+  }
+  #LoginSmoke > div {
+    margin: 0;
+  }

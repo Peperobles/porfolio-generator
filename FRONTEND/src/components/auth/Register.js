@@ -4,9 +4,11 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
+// import classnames from "classnames";
 
 import Navbar from "../layout/Navbar";
+
+import "./Register.css";
 
 class Register extends Component {
   constructor() {
@@ -51,113 +53,109 @@ class Register extends Component {
   };
 
   render() {
-    const { errors } = this.state;
+    // const { errors } = this.state;
 
     return (
       <div>
         <Navbar />
-        <div className="container mt-3">
-          <div className="row justify-content-center">
-            <div className="card p-3">
-              <article className="card-body">
-                <h4 className="card-title text-center mb-4 mt-1">Register</h4>
-                <hr />
-                <p className="text-info text-center">Register Now!</p>
-                <p className="text-secondary">
-                  Already have an account? <Link to="/login">Log in</Link>
-                </p>
-                <form noValidate onSubmit={this.onSubmit}>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-person" />
-                        </span>
-                      </div>
+        <div className="container-fluid" id="RegisterContainer">
+          <div className="container-fluid" id="ResgisterSmoke">
+            <div className="row justify-content-center">
+              <div className="card p-5 shadow mt-5">
+                <article className="card-body">
+                  <h4 className="card-title text-center mb-4 mt-1">REGISTER</h4>
+                  <form noValidate onSubmit={this.onSubmit}>
+                    <div className="form-groupe mb-4">
                       <input
-                        placeholder="Name"
                         onChange={this.onChange}
                         value={this.state.name}
-                        error={errors.name}
                         id="name"
                         type="text"
-                        className={classnames("form-control", {
-                          invalid: errors.name
-                        })}
+                        placeholder="Name"
                       />
+                      <label
+                        className="label-form-groupe"
+                        htmlFor="dynamic-label-input"
+                      >
+                        Name
+                      </label>
                     </div>
-                    <span className="text-danger">{errors.name}</span>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-mail-outline" />
-                        </span>
-                      </div>
+                    <div className="form-groupe mb-4">
                       <input
-                        placeholder="E-mail"
                         onChange={this.onChange}
                         value={this.state.email}
-                        error={errors.email}
                         id="email"
                         type="email"
-                        className={classnames("form-control", {
-                          invalid: errors.email
-                        })}
+                        placeholder="E-mail"
                       />
+                      <label
+                        className="label-form-groupe"
+                        htmlFor="dynamic-label-input"
+                      >
+                        E-mail
+                      </label>
                     </div>
-                    <span className="text-danger">{errors.email}</span>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock" />
-                        </span>
-                      </div>
+                    <div className="form-groupe mb-4">
                       <input
-                        placeholder="Password"
                         onChange={this.onChange}
                         value={this.state.password}
-                        error={errors.password}
                         id="password"
                         type="password"
-                        className={classnames("form-control", {
-                          invalid: errors.password
-                        })}
+                        placeholder="Password"
                       />
+                      <label
+                        className="label-form-groupe"
+                        htmlFor="dynamic-label-input"
+                      >
+                        Password
+                      </label>
                     </div>
-                    <span className="text-danger">{errors.password}</span>
-                  </div>
-                  <div className="form-group">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="mdi mdi-lock-outline" />
-                        </span>
-                      </div>
+                    <div className="form-groupe mb-4">
                       <input
                         onChange={this.onChange}
-                        placeholder="Repeat Password"
                         value={this.state.password2}
-                        error={errors.password2}
                         id="password2"
                         type="password"
-                        className={classnames("form-control", {
-                          invalid: errors.password2
-                        })}
+                        placeholder="Repeat Password"
                       />
+                      <label
+                        className="label-form-groupe"
+                        htmlFor="dynamic-label-input"
+                      >
+                        Repeat Password
+                      </label>
                     </div>
-                    <span className="text-danger">{errors.password2}</span>
-                  </div>
-                  <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block">
-                      Register
-                    </button>
-                  </div>
-                </form>
-              </article>
+                    <div className="form-group">
+                      <input
+                        type="checkbox"
+                        name="agree-term"
+                        id="agree-term"
+                        className="agree-term"
+                      />
+                      <label htmlFor="agree-term" className="label-agree-term">
+                        <span>
+                          <span />
+                        </span>
+                        I agree all statements in{" "}
+                        <a href="##" className="term-service">
+                          Terms of service
+                        </a>
+                      </label>
+                    </div>
+                    <div className="form-group">
+                      <button
+                        type="submit"
+                        className="btn btn-info btn-block"
+                      >
+                        Register
+                      </button>
+                    </div>
+                    <p className="text-secondary">
+                      Already have an account? <Link to="/login">Log in</Link>
+                    </p>
+                  </form>
+                </article>
+              </div>
             </div>
           </div>
         </div>

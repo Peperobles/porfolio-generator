@@ -30,6 +30,7 @@ class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
+    localStorage.clear();
   };
 
   render() {

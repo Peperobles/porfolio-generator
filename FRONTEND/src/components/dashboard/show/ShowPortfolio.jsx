@@ -88,7 +88,6 @@ export class ShowPortfolio extends Component {
   render() {
     return (
       <div>
-        {console.log(this.props)}
         <div className="container">
           <div className="row">
             {this.state.deploys[1] === undefined ? (
