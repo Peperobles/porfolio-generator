@@ -9,7 +9,13 @@
   );
   box-shadow: 5px 3px 20px 5px #80808045;
 }
-
-/* .selected {
-  background: black;
-} */
+#dashboard
+  > div
+  > div:nth-child(5)
+  > div.sidenav---navitem---9uL5T
+  > div.sidenav---navtext---1AE_f
+  > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

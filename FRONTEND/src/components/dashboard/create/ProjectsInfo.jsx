@@ -8,6 +8,8 @@ import { sendProjectsInfo } from "../../../actions/createPortfolioActions";
 
 // Component
 import { FormErrors } from "./formerrors/FormErrors";
+import { Progress } from "react-sweet-progress";
+import "react-sweet-progress/lib/style.css";
 
 export class ProjectsInfo extends Component {
   constructor() {
@@ -155,102 +157,161 @@ export class ProjectsInfo extends Component {
   render() {
     return (
       <div>
-        <form>
-          <div className="container border">
-            <h4>PROJECT #1:</h4>
-            <div className="panel panel-default”">
-              <FormErrors formErrors={this.state.formErrors} />
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  placeholder="Nombre del Proyecto #1"
-                  onChange={this.onChange}
-                  value={this.state.projectName1}
-                  id="projectName1"
-                  type="text"
-                />
+        <div className="mt-3 p-1">
+          <Progress
+            theme={{
+              active: {
+                symbol: " ",
+                color: "rgb(0, 182, 208)"
+              }
+            }}
+            percent={99}
+          />
+        </div>
+        <div className="container shadow">
+          <div id="create-portfolio-row" className="row">
+            <div id="create-portfolio-container" className="col-lg-4 p-0">
+              <div id="smoke-create-portfolio">
+                <div
+                  className="row align-items-center"
+                  style={{ height: "80vh" }}
+                >
+                  <div className="col-12 text-center p-0">
+                    <span className="rounded-circle bg-info p-3 text-white">
+                      <b>03</b>
+                    </span>
+                    <span className="text-white ml-2">PROJECT'S INFO</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.infoProject1}
-                  id="infoProject1"
-                  type="text"
-                  placeholder="Info del proyecto #1"
-                />
+            <div className="col-lg-8">
+              <form noValidate>
+                <div className="panel panel-default”">
+                  <FormErrors formErrors={this.state.formErrors} />
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.projectName1}
+                    id="projectName1"
+                    type="text"
+                    placeholder="Project #1 - Name"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #1 - Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.infoProject1}
+                    id="infoProject1"
+                    type="text"
+                    placeholder="Project #1 - Info"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #1 - Info
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.projectName2}
+                    id="projectName2"
+                    type="text"
+                    placeholder="Project #2 - Name"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #2 - Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.infoProject2}
+                    id="infoProject2"
+                    type="text"
+                    placeholder="Project #2 - Info"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #2 - Info
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.projectName3}
+                    id="projectName3"
+                    type="text"
+                    placeholder="Project #3 - Name"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #3 - Name
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.infoProject3}
+                    id="infoProject3"
+                    type="text"
+                    placeholder="Project #3 - Info"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #3 - Info
+                  </label>
+                </div>
+              </form>
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4">
+                    <Link to="/create-portfolio/portfolio-info">
+                      <button
+                        className="btn btn-info btn-lg btn-block"
+                        disabled={!this.state.formValid}
+                        onClick={this.handleClickRedux}
+                      >
+                        {" "}
+                        BACK
+                      </button>
+                    </Link>
+                  </div>
+                  <div className="col-md-4 offset-md-4">
+                    <Link to="/create-portfolio/post-zeit-api">
+                      <button
+                        className="btn btn-info btn-lg btn-block"
+                        disabled={!this.state.formValid}
+                        onClick={this.handleClickRedux}
+                      >
+                        {" "}
+                        SEND
+                      </button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          {/* --------------------------------------------- PROJECT #2 --------------------------------------------- */}
-          <div className="container border">
-            <h4>PROJECT #2:</h4>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  placeholder="Nombre del Proyecto #2"
-                  onChange={this.onChange}
-                  value={this.state.projectName2}
-                  id="projectName2"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.infoProject2}
-                  id="infoProject2"
-                  type="text"
-                  placeholder="Info del Proyecto #2"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* --------------------------------------------- PROJECT #3 --------------------------------------------- */}
-
-          <div className="container border">
-            <h4>PROJECT #3:</h4>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  placeholder="Nombre del Proyecto #3"
-                  onChange={this.onChange}
-                  value={this.state.projectName3}
-                  id="projectName3"
-                  type="text"
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-group">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.infoProject3}
-                  id="infoProject3"
-                  type="text"
-                  placeholder="Info del Proyecto #3"
-                />
-              </div>
-            </div>
-          </div>
-        </form>
-        <Link to="/create-portfolio/portfolio-info">
-          <button onClick={this.handleClickRedux}> BACK</button>
-        </Link>
-        <Link to="/create-portfolio/post-zeit-api">
-          <button
-            disabled={!this.state.formValid}
-            onClick={this.handleClickRedux}
-          >
-            {" "}
-            SEND PORTFOLIO
-          </button>
-        </Link>
+        </div>
       </div>
     );
   }

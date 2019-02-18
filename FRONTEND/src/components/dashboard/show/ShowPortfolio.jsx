@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 // Components
 import DeployContainer from "./DeployContainer";
+import LoadingSpinnerCircle from "../../../utils/LoadingSpinnerCircle";
 
 export class ShowPortfolio extends Component {
   constructor() {
@@ -68,7 +69,13 @@ export class ShowPortfolio extends Component {
             this.setState(previousState => ({
               deploys: [
                 ...previousState.deploys,
-                { id: deploy.id, name: deploy.name, url: deploy.url, react: deploy.react, angular: deploy.angular }
+                {
+                  id: deploy.id,
+                  name: deploy.name,
+                  url: deploy.url,
+                  react: deploy.react,
+                  angular: deploy.angular
+                }
               ]
             }))
           ) : (
@@ -85,7 +92,7 @@ export class ShowPortfolio extends Component {
         <div className="container">
           <div className="row">
             {this.state.deploys[1] === undefined ? (
-              <p>NO PORTFOLIOS :(</p>
+              <LoadingSpinnerCircle />
             ) : (
               // console.log()
               <div id="deployContainer" class="row">
@@ -111,7 +118,7 @@ export class ShowPortfolio extends Component {
   }
 }
 const mapStateToProps = state => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(

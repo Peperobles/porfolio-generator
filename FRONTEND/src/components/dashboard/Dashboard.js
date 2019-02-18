@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-import {Chart} from "./Chart";
-// import Nuevo2 from "./Nuevo2";
+import { Chart } from "./Chart";
 
 //Correct components ----- BORRAR CUANDO ESTE TODO OK
 import ShowPortfolio from "./show/ShowPortfolio";
@@ -15,18 +14,9 @@ import PostZeitApi from "./create/zeit/PostZeitApi";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-// import { Link } from "react-router-dom";
+import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 
-// Components
-// import ZeitApi from "./ZeitApi";
-
-import SideNav, {
-  NavItem,
-  NavIcon,
-  NavText
-} from "@trendmicro/react-sidenav";
-
-// Be sure to include styles at some point, probably during your bootstraping
+// Style SideNav
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./Dashboard.css";
 
@@ -43,8 +33,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    // console.log(this.props)
-    // const { user } = this.props.auth;
 
     return (
       <div>
@@ -98,8 +86,22 @@ class Dashboard extends Component {
                   </NavText>
                   <NavItem />
                 </NavItem>
-                <hr/>
-                <p>LOGOUT</p>
+                <hr />
+                <NavItem eventKey="logOut">
+                  <NavIcon>
+                    <i
+                      className="fas fa-power-off"
+                      style={{ fontSize: "1.75em" }}
+                    />
+                  </NavIcon>
+                  <NavText>
+                    {/* <Link to="/create-portfolio/personal-info">
+                      Create Portfolio
+                    </Link> */}
+                    <button onClick={this.onLogoutClick}>Logout</button>
+                  </NavText>
+                  <NavItem />
+                </NavItem>
               </SideNav.Nav>
             </SideNav>
             <div className="container">
@@ -132,11 +134,7 @@ class Dashboard extends Component {
                     path="/create-portfolio/post-zeit-api"
                     component={PostZeitApi}
                   />
-                  <Route
-                    exact
-                    path="/chart"
-                    component={Chart}
-                  />
+                  <Route exact path="/chart" component={Chart} />
                 </div>
               </div>
             </div>

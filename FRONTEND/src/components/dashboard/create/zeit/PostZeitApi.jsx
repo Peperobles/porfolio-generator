@@ -5,6 +5,12 @@ import axios from "axios";
 // Redux
 import { connect } from "react-redux";
 
+// Assets
+import backgroundAssets from "../../../../assets/img/background.png";
+
+// Components
+import LoadingSpinnerCircle from "../../../../utils/LoadingSpinnerCircle";
+
 export class PostZeitApi extends Component {
   constructor() {
     super();
@@ -23,10 +29,7 @@ export class PostZeitApi extends Component {
     let personalInfo = this.props.createPortfolio.personalInfo;
     let projectsInfo = this.props.createPortfolio.projectsInfo;
 
-    console.log(portfolioInfo);
-    console.log(personalInfo);
-    console.log(projectsInfo);
-
+ 
     this.setState({ loading: true });
     axios({
       method: "post",
@@ -180,39 +183,77 @@ export class PostZeitApi extends Component {
           proyectsName: this.props.createPortfolio.portfolioInfo.portfolioName,
           proyectUrl: this.state.url,
           angularIcon: this.props.createPortfolio.portfolioInfo.angularIcon,
-          reactIcon: this.props.createPortfolio.portfolioInfo.reactIcon,
+          reactIcon: this.props.createPortfolio.portfolioInfo.reactIcon
         })
         .then(response => console.log(response));
     }
   }
 
+  componentDidMount() {
+    this.handleClickPost();
+  }
+
   render() {
+    // Props
+    const portfolioInfo = this.props.createPortfolio.portfolioInfo;
+
     // Spinner Loading...
     let loading;
+
     if (this.state.loading) {
-      loading = (
-        <div className="spinner-border text-info" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+      loading = <LoadingSpinnerCircle />;
     } else {
       loading = (
         // Print link to project
-        <a
-          href={`https://${this.state.url}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          VER PROYECTO {this.props.createPortfolio.portfolioInfo.portfolioName}
-        </a>
+        <div className="row">
+          <div className="col-md-4 offset-md-3">
+            <div className="card profile-card-3 shadow mt-4">
+              <div className="background-block">
+                <img
+                  src={backgroundAssets}
+                  alt="profile-sample1"
+                  className="background"
+                />
+              </div>
+              <div className="profile-thumb-block">
+                {portfolioInfo.angularIcon ? (
+                  <img
+                    src="https://angular.io/assets/images/logos/angular/angular.png"
+                    alt="profile"
+                    className="profile"
+                  />
+                ) : (
+                  <img
+                    src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+                    alt="profile"
+                    className="profile"
+                  />
+                )}
+              </div>
+              <div className="card-content">
+                <h2>
+                  {portfolioInfo.portfolioName}
+                  <small>Portfolio</small>
+                </h2>
+                <div className="icon-block">
+                  <a
+                    href={`https://${this.state.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="far fa-eye" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
+
     return (
       <div>
-        {console.log(this.props)}
-        {loading}
-        <p>HOLAAA</p>
-        <button onClick={this.handleClickPost}>asdf</button>
+          {loading}
       </div>
     );
   }
