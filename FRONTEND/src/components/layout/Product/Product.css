@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+
+
 #productContainer {
   min-height: 100vh;
   background-image: linear-gradient(
@@ -17,14 +21,11 @@
 
 #coverProductContainer {
   position: absolute;
-
-  /* min-height: 100vh;
-    background-image: url(../../../assets/img/background.png);
-    background-size: cover; */
 }
 
 #textContainer {
   position: relative;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 #textContainer .row {
@@ -47,8 +48,28 @@
 
 #steps {
   color: white;
+  font-family: 'Fira Sans Condensed', sans-serif;
+
 }
 
 #steps span{
   background: #00D2AB;
+}
+
+#lineheading{
+  width: 57px;
+  height: 5px;
+  background-color: #17a2b8;
+  display: inline-block;
+  border-radius: 200px;
+  margin-bottom: 25px;
+}
+
+#lineheading2{
+  width: 57px;
+  height: 5px;
+  background-color: #00cab9;;
+  display: inline-block;
+  border-radius: 200px;
+  margin-bottom: 25px;
 }

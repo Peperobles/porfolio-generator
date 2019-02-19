@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
 #iconsBox{
+  font-family: 'Fira Sans Condensed', sans-serif;
+
     margin-top: 10vh;
     min-height: 60vh
 }
 #iconsBox .border{
     background: #007ED2;
     color:white;
+}
+
+.iconColored{
+    color:#ffffff57;
 }

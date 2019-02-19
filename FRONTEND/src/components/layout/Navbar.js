@@ -21,29 +21,35 @@ class Navbar extends Component {
         {this.props.auth.isAuthenticated ? (
           <nav className="navbar navbar-light bg-light">
             <Link to="/">
-              <i className="mdi mdi-home mdi-2x" />
+              <i className="fas fa-redo fa-rotate-270 fa-2x" />
+              PORTFOLIO-GENERATOR
             </Link>
-            <div>
-              <p>Welcome {this.props.auth.user.name}</p>
-            </div>
+
             <div>
               <Link to="/dashboard">
-                <button className="btn btn-secondary m-3">Dashboard</button>
+                <button id="buttonDashboardNav"className="btn btn-secondary m-3">Dashboard</button>
               </Link>
-              <button onClick={this.onLogoutClick} className="btn btn-danger m-3">Logout</button>
+              <button
+                id="buttonLogoutNav"
+                onClick={this.onLogoutClick}
+                className="btn btn-info m-3"
+              >
+                <i className="fas fa-power-off fa-lg" />
+              </button>
             </div>
           </nav>
         ) : (
           <nav className="navbar navbar-light bg-light">
             <Link to="/">
-              <i className="mdi mdi-home mdi-2x" />
+              <i className="fas fa-redo fa-rotate-270 fa-2x" />
+              PORTFOLIO-GENERATOR
             </Link>
             <div>
               <Link to="/register">
-                <button className="btn btn-info m-3">Register</button>
+                <button id="buttonRegisterNav" className="btn btn-info m-3">Register</button>
               </Link>
               <Link to="/login">
-                <button className="btn btn-secondary m-3">Log In</button>
+                <button id="buttonLogIngNav" className="btn btn-secondary m-3"><i className="far fa-user fa-lg"></i></button>
               </Link>
             </div>
           </nav>

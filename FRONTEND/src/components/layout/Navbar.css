@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:italic");
 nav {
   background-image: linear-gradient(
     to left,
@@ -7,11 +8,52 @@ nav {
     #00c3c3,
     #00d4a6
   );
+  font-family: "Fira Sans", sans-serif;
 }
 
-nav a, nav button{
-    color: white;
+nav a,
+nav button {
+  color: #ffffffba;
 }
-#root > div > nav > div > a:nth-child(1) > button{
-    background: #00ca9c
+#root > div > nav > div > a:nth-child(1) > button {
+  background: #00ca9c;
+}
+#root > div > div > div:nth-child(1) > nav > a:hover {
+  color: white;
+  text-decoration: none;
+}
+#buttonLogoutNav{
+  color: #ffffff75;
+  background-color: #ff000000;
+  border-color: #17a2b800;
+}
+#buttonLogoutNav:hover{
+  color: white;
+}
+#buttonDashboardNav{
+  color: #ffffffb0;
+  background-color: #6c757d00;
+  border-color: #6c757d00;
+}
+#buttonDashboardNav:hover{
+  color: white;
+}
+
+#buttonLogIngNav{
+  color: #ffffff75;
+  background-color: #ff000000;
+  border-color: #17a2b800;
+}
+#buttonLogIngNav:hover{
+  color: white;
+}
+
+#buttonRegisterNav{
+  color: #fff;
+  background-color: #00d4a8;
+  border-color: #17a2b8;
+}
+#buttonRegisterNav:hover{
+  background-color: #0092dc;
+  border-color: #00d3a8;
 }
