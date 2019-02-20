@@ -99,7 +99,7 @@ export class PostZeitApi extends Component {
                     <span class="d-none d-lg-block">
                       <img
                         class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                        src="https://dl.dropbox.com/s/0gfouulphaqs0es/profile.jpg?dl=0"
+                        src="https://daks2k3a4ib2z.cloudfront.net/55d62f32fa59c51977889877/561d4d3b8cf0398714ac71b5_MM-092714_Avatar.jpg"
                         alt="profile-img"
                       />
                     </span>
