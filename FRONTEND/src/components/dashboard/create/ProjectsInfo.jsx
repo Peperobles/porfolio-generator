@@ -17,10 +17,14 @@ export class ProjectsInfo extends Component {
     this.state = {
       projectName1: "",
       infoProject1: "",
+      urlProject1: "",
       projectName2: "",
       infoProject2: "",
+      urlProject2: "",
       projectName3: "",
       infoProject3: "",
+      urlProject3: "",
+
 
       //VALIDATION
       formErrors: { projectName1: "" },
@@ -128,10 +132,13 @@ export class ProjectsInfo extends Component {
     let projectsInfo = {
       projectName1: this.state.projectName1,
       infoProject1: this.state.infoProject1,
+      urlProject1: this.state.urlProject1,
       projectName2: this.state.projectName2,
       infoProject2: this.state.infoProject2,
+      urlProject2: this.state.urlProject2,
       projectName3: this.state.projectName3,
-      infoProject3: this.state.infoProject3
+      infoProject3: this.state.infoProject3,
+      urlProject3: this.state.urlProject3,
     };
     localStorage.setItem("ProjectsInfo", JSON.stringify(projectsInfo));
   };
@@ -144,10 +151,13 @@ export class ProjectsInfo extends Component {
       ? this.setState({
           projectName1: projectsInfoStorage.projectName1,
           infoProject1: projectsInfoStorage.infoProject1,
+          urlProject1: projectsInfoStorage.urlProject1,
           projectName2: projectsInfoStorage.projectName2,
           infoProject2: projectsInfoStorage.infoProject2,
+          urlProject2: projectsInfoStorage.urlProject2,
           projectName3: projectsInfoStorage.projectName3,
           infoProject3: projectsInfoStorage.infoProject3,
+          urlProject3: projectsInfoStorage.urlProject3,
 
           formValid: !this.state.formValid
         })
@@ -223,6 +233,21 @@ export class ProjectsInfo extends Component {
                 <div className="form-groupe mb-4">
                   <input
                     onChange={this.onChange}
+                    value={this.state.urlProject1}
+                    id="urlProject1"
+                    type="text"
+                    placeholder="Project #1 - URL"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #1 - URL
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
                     value={this.state.projectName2}
                     id="projectName2"
                     type="text"
@@ -253,6 +278,21 @@ export class ProjectsInfo extends Component {
                 <div className="form-groupe mb-4">
                   <input
                     onChange={this.onChange}
+                    value={this.state.urlProject2}
+                    id="urlProject2"
+                    type="text"
+                    placeholder="Project #2 - URL"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #2 - URL
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
                     value={this.state.projectName3}
                     id="projectName3"
                     type="text"
@@ -278,6 +318,21 @@ export class ProjectsInfo extends Component {
                     htmlFor="dynamic-label-input"
                   >
                     Project #3 - Info
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.urlProject3}
+                    id="urlProject3"
+                    type="text"
+                    placeholder="Project #3 - URL"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Project #3 - URL
                   </label>
                 </div>
               </form>

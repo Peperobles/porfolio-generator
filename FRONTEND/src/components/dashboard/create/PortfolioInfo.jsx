@@ -19,12 +19,13 @@ export class PortfolioInfo extends Component {
     this.state = {
       // Porfolio Info
       portfolioName: "",
-      gitHubIcon: false,
+      nodeJsIcon: false,
       reactIcon: false,
       jsIcon: false,
       cssIcon: false,
       htmlIcon: false,
       angularIcon: false,
+      sassIcon: false,
 
       // VALIDATION
       formErrors: { portfolioName: "" },
@@ -81,12 +82,13 @@ export class PortfolioInfo extends Component {
     this.props.sendPortfolioInfo(this.state);
     let portfolioInfo = {
       portfolioName: this.state.portfolioName,
-      gitHubIcon: this.state.gitHubIcon,
+      nodeJsIcon: this.state.nodeJsIcon,
       reactIcon: this.state.reactIcon,
       jsIcon: this.state.jsIcon,
       cssIcon: this.state.cssIcon,
       htmlIcon: this.state.htmlIcon,
-      angularIcon: this.state.angularIcon
+      angularIcon: this.state.angularIcon,
+      sassIcon: this.state.sassIcon,
     };
     localStorage.setItem("portfolioInfo", JSON.stringify(portfolioInfo));
   };
@@ -177,12 +179,12 @@ export class PortfolioInfo extends Component {
                 <hr/>
                 <div className="inputGroup mb-4">
                   <input
-                    id="gitHubIcon"
-                    name="gitHubIcon"
+                    id="nodeJsIcon"
+                    name="nodeJsIcon"
                     type="checkbox"
                     onChange={this.onChange}
                   />
-                  <label htmlFor="gitHubIcon">Github</label>
+                  <label htmlFor="nodeJsIcon">Node Js</label>
                 </div>
                 <div className="inputGroup mb-4">
                   <input
@@ -210,6 +212,15 @@ export class PortfolioInfo extends Component {
                     onChange={this.onChange}
                   />
                   <label htmlFor="htmlIcon">HTML</label>
+                </div>
+                <div className="inputGroup mb-4">
+                  <input
+                    id="sassIcon"
+                    name="sassIcon"
+                    type="checkbox"
+                    onChange={this.onChange}
+                  />
+                  <label htmlFor="sassIcon">SASS</label>
                 </div>
               </form>
               <div className="container">
@@ -250,12 +261,13 @@ export class PortfolioInfo extends Component {
 
 const mapStateToProps = state => ({
   portfolioName: state.portfolioName,
-  gitHubIcon: state.gitHubIcon,
+  nodeJsIcon: state.nodeJsIcon,
   reactIcon: state.reactIcon,
   jsIcon: state.jsIcon,
   cssIcon: state.cssIcon,
   htmlIcon: state.htmlIcon,
-  angularIcon: state.angularIcon
+  angularIcon: state.angularIcon,
+  sassIcon: state.sassIcon,
 });
 
 export default (PortfolioInfo = connect(

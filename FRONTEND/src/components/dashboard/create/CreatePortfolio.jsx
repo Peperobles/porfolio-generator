@@ -23,6 +23,7 @@ export class CreatePortfolio extends Component {
       userInfo: "",
       email: "",
       linkedin: "",
+      github: "",
 
       //VALIDATION
       formErrors: { userName: "" },
@@ -31,6 +32,7 @@ export class CreatePortfolio extends Component {
       userInfoValid: false,
       emailValid: false,
       linkedinValid: false,
+      githubValid: false,
 
       formValid: false
     };
@@ -55,6 +57,7 @@ export class CreatePortfolio extends Component {
     let userInfoValid = this.state.userInfoValid;
     let emailValid = this.state.emailValid;
     let linkedinValid = this.state.linkedinValid;
+    let githubValid = this.state.githubValid;
 
     switch (fieldId) {
       case "userName":
@@ -79,6 +82,10 @@ export class CreatePortfolio extends Component {
         linkedinValid = value.length > 1;
         fieldValidationErrors.linkedin = linkedinValid ? "" : " is too short";
         break;
+      case "github":
+        githubValid = value.length > 1;
+        fieldValidationErrors.github = githubValid ? "" : " is too short";
+        break;
       default:
         break;
     }
@@ -89,7 +96,8 @@ export class CreatePortfolio extends Component {
         userLastNameValid: userLastNameValid,
         userInfoValid: userInfoValid,
         emailValid: emailValid,
-        linkedinValid: linkedinValid
+        linkedinValid: linkedinValid,
+        githubValid: githubValid,
       },
       this.validateForm
     );
@@ -102,7 +110,8 @@ export class CreatePortfolio extends Component {
         this.state.userLastNameValid &&
         this.state.userInfoValid &&
         this.state.emailValid &&
-        this.state.linkedinValid
+        this.state.linkedinValid &&
+        this.state.githubValid
     });
   }
 
@@ -114,7 +123,8 @@ export class CreatePortfolio extends Component {
       userLastName: this.state.userLastName,
       userInfo: this.state.userInfo,
       email: this.state.email,
-      linkedin: this.state.linkedin
+      linkedin: this.state.linkedin,
+      github: this.state.github,
     };
     localStorage.setItem("PersonalInfo", JSON.stringify(personalInfo));
   };
@@ -131,6 +141,7 @@ export class CreatePortfolio extends Component {
           userInfo: personalInfoStorage.userInfo,
           email: personalInfoStorage.email,
           linkedin: personalInfoStorage.linkedin,
+          github: personalInfoStorage.github,
           formValid: !this.state.formValid
         })
       : this.setState({ email: this.props.auth.user.email });
@@ -245,6 +256,21 @@ export class CreatePortfolio extends Component {
                     htmlFor="dynamic-label-input"
                   >
                     Linkedin Profile Url
+                  </label>
+                </div>
+                <div className="form-groupe mb-4">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.github}
+                    id="github"
+                    type="text"
+                    placeholder="Github Profile Url"
+                  />
+                  <label
+                    className="label-form-groupe"
+                    htmlFor="dynamic-label-input"
+                  >
+                    Github Profile Url
                   </label>
                 </div>
               </form>
