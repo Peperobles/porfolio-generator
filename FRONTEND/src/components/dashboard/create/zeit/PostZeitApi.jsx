@@ -95,11 +95,11 @@ export class PostZeitApi extends Component {
                   id="sideNav"
                 >
                   <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <span class="d-block d-lg-none">Clarence Taylor</span>
+                    <span class="d-block d-lg-none">${portfolioInfo.portfolioName}</span>
                     <span class="d-none d-lg-block">
                       <img
                         class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                        src="https://daks2k3a4ib2z.cloudfront.net/55d62f32fa59c51977889877/561d4d3b8cf0398714ac71b5_MM-092714_Avatar.jpg"
+                        src="https://dl.dropbox.com/s/5ue6aocmmw9781z/fotocvcircle.png?dl=0"
                         alt="profile-img"
                       />
                     </span>
