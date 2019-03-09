@@ -6,5 +6,3 @@ export const SET_PERSONAL_INFO = "SET_PERSONAL_INFO";
 export const SET_PORTFOLIO_INFO = "SET_PORTFOLIO_INFO";
 export const SET_PROJECTS_INFO = "SET_PROJECTS_INFO";
 
-
-export const SEND_NUEVO = "SEND_NUEVO" // borrar cuando todo salga bien por dios!!!!

@@ -94,7 +94,7 @@ export class ShowPortfolio extends Component {
               <LoadingSpinnerCircle />
             ) : (
               // console.log()
-              <div id="deployContainer" class="row">
+              <div id="deployContainer" className="row">
                 {this.state.deploys.map((deploy, index) =>
                   deploy.name === null ? (
                     console.log()
